@@ -283,7 +283,7 @@ src/CMakeFiles/mprpc.dir/rpcprovider.cc.o: \
  /usr/include/muduo/base/CurrentThread.h /usr/include/muduo/net/TimerId.h \
  /home/gyl/workspace/mprpc/src/include/mprpcapplication.h \
  /home/gyl/workspace/mprpc/src/include/mprpcconfig.h \
- /home/gyl/workspace/mprpc/src/rpcheader.pb.h \
+ /home/gyl/workspace/mprpc/src/include/rpcheader.pb.h \
  /usr/local/include/google/protobuf/io/coded_stream.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \

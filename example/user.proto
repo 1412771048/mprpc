@@ -3,7 +3,7 @@ package fixbug;
 option cc_generic_services = true;
 
 message ResultCode {
-    int32 errcode = 1; //错误代码
+    int32 errcode = 1; //错误代码: 0表示成功
     bytes errmsg = 2; //错误内容
 }
 

@@ -1,14 +1,22 @@
-# 设置cmake的最低版本和项目名称
-cmake_minimum_required(VERSION 3.22.1)
-project(rpc)
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) #静态库生成位置
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) #动态库生成位置
-include_directories(${PROJECT_SOURCE_DIR}/src/include ${PROJECT_SOURCE_DIR}/example ${PROJECT_SOURCE_DIR}/thirdparty)
-link_directories(${PROJECT_SOURCE_DIR}/lib)
+cmake_minimum_required(VERSION 2.8)
+project(mprpc)  #每个相对的顶级cmake都要写一个，意思就是最顶级的要写一个，下面每个模块的顶级cmake也要写一个
+set(CMAKE_BUILD_TYPE Debug) #Debug/Release
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/bin) #程序生成位置, PROJECT_SOURCE_DIR是当前项目的顶级路径
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/lib)  #库生成位置
+include_directories(
+    ${PROJECT_SOURCE_DIR}/include
+    ${PROJECT_SOURCE_DIR}/proto
+    ${PROJECT_SOURCE_DIR}/thirdparty/muduo/include
+    ${PROJECT_SOURCE_DIR}/thirdparty/protobuf/include
+    ${PROJECT_SOURCE_DIR}/thirdparty/simpleini
+) 
 
-# src包含了rpc框架所有的相关代码
+link_directories(
+    ${PROJECT_SOURCE_DIR}/lib 
+    ${PROJECT_SOURCE_DIR}/thirdparty/muduo/lib
+    ${PROJECT_SOURCE_DIR}/thirdparty/protobuf/lib
+) 
+
 add_subdirectory(src)
-# example包含了rpc框架使用的示例代码
 add_subdirectory(example)
+

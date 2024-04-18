@@ -1,11 +1,8 @@
-#include <iostream>
-#include <string>
 #include "user.pb.h"
-#include "mprpcapplication.h"
 #include "rpcprovider.h"
 
-//callee是rpc服务提供者，那他如何提供的呢，即如何把本地的方法发布成可供远程调用的rpc方法?
-//先要定义一个proto，生成2个服务类，UserServiceRpc类是给我们使用的，重写虚函数，写好后给框架调用
+
+
 class UserService: public fixbug::UserServiceRpc {
 public:
     bool Login(std::string name, std::string pwd) {
@@ -18,29 +15,40 @@ public:
                 ::fixbug::LoginResponse* response, 
                 ::google::protobuf::Closure* done) 
     {
-        //这里面就三步
+        //就三步
         //1. 通过request调用本地方法处理业务
-        std::string name = request->name(), pwd = request->pwd(); //LoginRequest*他是这个类啊
-        bool res = Login(name, pwd);
+        bool res = Login(request->name(), request->pwd());
         //2. 结果填入response
         response->set_sucess(res);
         auto ResultCode = response->mutable_result();
         ResultCode->set_errcode(0);
         ResultCode->set_errmsg("");
-        //3. 执行回调：done
-        done->Run();//这里也需要重写，把response序列化，通过网络发出去
+        //3. done->Run(),这个要重写，无非就是序列化+网络发送
+        done->Run();
     }
 };
 
-//callee的业务已经写好了，现在我需要使用框架
+
+
 int main(int argc, char** argv) {
-    //框架的使用套路(类似muduo啊)
-    //1. 框架初始化
-    MprpcApplication::Init(argc, argv);
-    //2. 把UserService对象发布到rpc节点上
-    RpcProvider provider; //provider是一个网络服务对象
-    provider.NotifyService(new UserService); //把服务写到map表里，后续远端服务来了就查map表即可。
-    //provider.NotifyService(new ProductService); 可以把多个方法发布成rpc服务
-    //3. 启动一个rpc服务发布节点
-    provider.Run();//run以后，进程阻塞等待远程调用请求，这里就是muduo网络模块
+    RpcProvider provider; 
+    //加载配置文件
+    provider.LoadConfig(); 
+
+    {
+        std::shared_lock<std::shared_mutex> lock(DataBank::rw_mutex); //共享读锁
+        if (DataBank::config_map.empty()) {
+            std::cout << "config_map is empty" << std::endl;
+            return -1;
+        }
+        std::cout << "rpc_server_ip: " << DataBank::config_map["rpc_server_ip"] << std::endl;
+        std::cout << "rpc_server_port: " << DataBank::config_map["rpc_server_port"] << std::endl;
+        std::cout << "zookeeper_server_ip: " << DataBank::config_map["zookeeper_server_ip"] << std::endl;
+        std::cout << "zookeeper_server_port:" << DataBank::config_map["zookeeper_server_port"] << std::endl;
+    }
+    //发布一个服务
+    // provider.NotifyService(new UserService); 
+    // //provider.NotifyService(new ProductService); 可以把多个方法发布成rpc服务
+    // //循环等待请求
+    // provider.Run();
 }

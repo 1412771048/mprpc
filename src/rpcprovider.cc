@@ -16,7 +16,7 @@ void RpcProvider::LoadConfig() {
     }
 
     {
-        std::unique_lock<std::shared_mutex> lock(DataBank::rw_mutex); //写锁
+        std::unique_lock<std::shared_mutex> lock(DataBank::config_map_mutex); //写锁
         DataBank::config_map.insert({"rpc_server_ip", rpc_server_ip});
         DataBank::config_map.insert({"rpc_server_port", rpc_server_port});
         DataBank::config_map.insert({"zookeeper_server_ip", zookeeper_server_ip});

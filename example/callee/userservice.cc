@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     provider.LoadConfig(); 
 
     {
-        std::shared_lock<std::shared_mutex> lock(DataBank::rw_mutex); //共享读锁
+        std::shared_lock<std::shared_mutex> lock(DataBank::config_map_mutex); //共享读锁
         if (DataBank::config_map.empty()) {
             std::cout << "config_map is empty" << std::endl;
             return -1;

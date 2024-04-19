@@ -15,28 +15,31 @@ void RpcProvider::LoadConfig() {
         exit(EXIT_FAILURE);
     }
 
-    {
-        std::unique_lock<std::shared_mutex> lock(DataBank::config_map_mutex); //写锁
-        DataBank::config_map.insert({"rpc_server_ip", rpc_server_ip});
-        DataBank::config_map.insert({"rpc_server_port", rpc_server_port});
-        DataBank::config_map.insert({"zookeeper_server_ip", zookeeper_server_ip});
-        DataBank::config_map.insert({"zookeeper_server_port", zookeeper_server_port});
-    }
+    DataBank::config_map.insert({"rpc_server_ip", rpc_server_ip});
+    DataBank::config_map.insert({"rpc_server_port", rpc_server_port});
+    DataBank::config_map.insert({"zookeeper_server_ip", zookeeper_server_ip});
+    DataBank::config_map.insert({"zookeeper_server_port", zookeeper_server_port});
+    
 }
 
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
-    // auto pserverdesc = service->GetDescriptor(); //获取服务的具体dui
-    // std::string service_name = pserverdesc->name(); //获取服务名,即类名
-    // int method_count = pserverdesc->method_count(); //获取方法数量，因为一个服务对象可以有多个方法
+    //获取服务的具体描述：里面有服务名，方法数，每个方法名，都通过这个拿
+    auto pserverdesc = service->GetDescriptor(); 
+    std::string service_name = pserverdesc->name(); //获取服务名,即类名
+    int method_count = pserverdesc->method_count(); //获取方法数量，因为一个服务对象可以有多个方法
 
-    // ServiceInfo service_info; 
-    // service_info.service = service; 
-    // for (int i = 0; i < method_count; i++) {
-    //     auto pmethoddesc = pserverdesc->method(i); //获取一个方法描述
-    //     std::string method_name = pmethoddesc->name(); //获取方法名，即函数名
-    //     service_info.methodMap[method_name] = pmethoddesc;
-    // }   
-    // m_serviceMap.insert({service_name, service_info}); //插入服务信息到服务map中
+    ServiceInfo service_info; 
+    service_info.service = service; 
+    for (int i = 0; i < method_count; i++) {
+        auto pmethoddesc = pserverdesc->method(i); //获取一个方法描述
+        std::string method_name = pmethoddesc->name(); //获取方法名，即函数名
+        service_info.methodMap[method_name] = pmethoddesc;
+    }   
+    m_serviceMap.insert({service_name, service_info}); //插入服务信息到服务map中
+    
+
+    //服务名-服务
+    DataBank::service_map.insert({service->GetDescriptor()->name(), service});
 }
   
 // 启动rpc服务节点，开始提供rpc远程网络调用服务

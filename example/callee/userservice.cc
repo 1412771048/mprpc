@@ -34,23 +34,18 @@ int main(int argc, char** argv) {
     RpcProvider provider; 
     //加载配置文件
     provider.LoadConfig(); 
+    
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
 
-    std::cout << "rpc_server_ip: " << DataBank::config_map["rpc_server_ip"] << std::endl;
-    std::cout << "rpc_server_port: " << DataBank::config_map["rpc_server_port"] << std::endl;
-    std::cout << "zookeeper_server_ip: " << DataBank::config_map["zookeeper_server_ip"] << std::endl;
-    std::cout << "zookeeper_server_port:" << DataBank::config_map["zookeeper_server_port"] << std::endl;
+    std::cout << "rpc_server_ip: " << (*config_map_ptr)["rpc_server_ip"] << std::endl;
+    std::cout << "rpc_server_port: " << (*config_map_ptr)["rpc_server_port"] << std::endl;
+    std::cout << "zookeeper_server_ip: " << (*config_map_ptr)["zookeeper_server_ip"] << std::endl;
+    std::cout << "zookeeper_server_port:" << (*config_map_ptr)["zookeeper_server_port"] << std::endl;
+    DataBank::Unlock("config_map", DataBank::READ);
     
     //发布一个服务，就是把服务填入map表里
     provider.NotifyService(new UserService); 
     
-    auto service = DataBank::service_map["UserServiceRpc"]->GetDescriptor();
-    std::cout << service->name() << std::endl;
-    std:: cout << service->method_count() << std::endl;
-    for (int i = 0; i < service->method_count(); i++) {
-        auto method = service->method(i);
-        std::cout << method->name() << std::endl;
-    }
-
     // //provider.NotifyService(new ProductService); 可以把多个方法发布成rpc服务
     // //循环等待请求
     // provider.Run();

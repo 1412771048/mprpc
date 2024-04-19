@@ -15,11 +15,12 @@ void RpcProvider::LoadConfig() {
         exit(EXIT_FAILURE);
     }
 
-    DataBank::config_map.insert({"rpc_server_ip", rpc_server_ip});
-    DataBank::config_map.insert({"rpc_server_port", rpc_server_port});
-    DataBank::config_map.insert({"zookeeper_server_ip", zookeeper_server_ip});
-    DataBank::config_map.insert({"zookeeper_server_port", zookeeper_server_port});
-    
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::WRITE);
+    config_map_ptr->insert({"rpc_server_ip", rpc_server_ip});
+    config_map_ptr->insert({"rpc_server_port", rpc_server_port});
+    config_map_ptr->insert({"zookeeper_server_ip", zookeeper_server_ip});
+    config_map_ptr->insert({"zookeeper_server_port", zookeeper_server_port});
+    DataBank::Unlock("config_map", DataBank::WRITE);
 }
 
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
@@ -39,7 +40,9 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
     
 
     //服务名-服务
-    DataBank::service_map.insert({service->GetDescriptor()->name(), service});
+    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)DataBank::Lock("service_map", DataBank::WRITE);
+    service_map_ptr->insert({service->GetDescriptor()->name(), service});
+    DataBank::Unlock("service_map", DataBank::WRITE);
 }
   
 // 启动rpc服务节点，开始提供rpc远程网络调用服务

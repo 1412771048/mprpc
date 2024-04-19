@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -v
+set -x
 
 
 if [ ! -d "build" ]; then

@@ -20,7 +20,7 @@ void RpcProvider::LoadConfig() {
     config_map_ptr->insert({"rpc_server_port", rpc_server_port});
     config_map_ptr->insert({"zookeeper_server_ip", zookeeper_server_ip});
     config_map_ptr->insert({"zookeeper_server_port", zookeeper_server_port});
-    DataBank::Unlock("config_map", DataBank::WRITE);
+    DataBank::Unlock(DataBank::WRITE);
 }
 
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
@@ -42,35 +42,37 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
     //服务名-服务
     auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)DataBank::Lock("service_map", DataBank::WRITE);
     service_map_ptr->insert({service->GetDescriptor()->name(), service});
-    DataBank::Unlock("service_map", DataBank::WRITE);
+    DataBank::Unlock(DataBank::WRITE);
 }
   
-// 启动rpc服务节点，开始提供rpc远程网络调用服务
+//启动网络服务，即muduo库编程
 void RpcProvider::Run() {
-    // std::string ip = MprpcApplication::GetInstance().GetConfig().load("rpc_server_ip");
-    // uint16_t port = stoi(MprpcApplication::GetInstance().GetConfig().load("rpc_port"));
-    // muduo::net::InetAddress address(ip, port);
+    //先拿ip, port
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
+    const std::string ip = (*config_map_ptr)["rpc_server_ip"];
+    const uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
+    DataBank::Unlock(DataBank::READ);
 
-    // //创建tcpserver对象
-    // muduo::net::TcpServer server(&m_eventLoop, address, "RpcProvider");
-    // //绑定连接回调和消息读写回调，分离了网络代码和业务代码
-    // server.setConnectionCallback(std::bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
-    // server.setMessageCallback(std::bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-    // //设置线程数
-    // server.setThreadNum(4);//一个io线程，三个工作线程
-    // //启动网络服务,后续有连接请求时，会调用connectioncallback，有消息读写请求时，会调用messagecallback
-    // server.start();
-    // m_eventLoop.loop();
+    //muduo库编程，基本死的
+    muduo::net::TcpServer server(&event_loop, muduo::net::InetAddress(ip, port), "RpcProvider");
+    // 绑定连接回调和消息读写回调，分离网络代码和业务代码
+    server.setConnectionCallback(std::bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
+    server.setMessageCallback(std::bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    //设置线程数
+    server.setThreadNum(4);//一个io线程，三个工作线程
+    //启动网络服务,后续有连接请求时，会调用connectioncallback，有消息读写请求时，会调用messagecallback
+    server.start();
+    event_loop.loop();
 }
 
-//新连接回调
+//对于新连接我们要干嘛
 void RpcProvider::OnConnection(const muduo::net::TcpConnectionPtr& conn) {
-    // if (!conn->connected()) {//断开连接了
-    //     conn->shutdown(); //关闭文件描述符，对应socket的close
-    // }
+    if (!conn->connected()) {//断开连接了
+        conn->shutdown(); //关闭文件描述符，对应socket的close
+    }
 }
 
-//已建立用户的读写事件回调，即远程来了个rpc请求，此方法就响应，执行回调
+//对于读写事件我们要干嘛，不同的场景不一样，这里就是反序列化，执行函数
 void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time) {
     // std::string msg = buf->retrieveAllAsString(); 
     // //把msg反序列化得到：service_name、method_name、args_size,

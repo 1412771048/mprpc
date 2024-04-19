@@ -1,10 +1,8 @@
 #include "databank.h"
 
-
 std::shared_mutex DataBank::rw_mtx; 
 std::unordered_map<std::string, std::string> DataBank::config_map;
 std::unordered_map<std::string, google::protobuf::Service*> DataBank::service_map;
-
 
 void* DataBank::Lock(const std::string& data, const LockMode& mode) {
     if (mode == READ) {
@@ -25,7 +23,7 @@ void* DataBank::Lock(const std::string& data, const LockMode& mode) {
     return nullptr;
 }   
 
-void DataBank::Unlock(const std::string& data, const LockMode& mode) {
+void DataBank::Unlock(const LockMode& mode) {
     if (mode == READ) {
         rw_mtx.unlock_shared(); //释放共享读锁
     } else if (mode == WRITE) {

@@ -2,14 +2,13 @@
 #include "rpcprovider.h"
 
 
-
+//服务端编程示例：把Login方法编程rpc方法
 class UserService: public fixbug::UserServiceRpc {
 public:
     bool Login(std::string name, std::string pwd) {
         std::cout << "这是本地服务: Login, name: " << name << ", pwd: " << pwd << std::endl; 
         return true;
     }
-
     void Login(::google::protobuf::RpcController* controller, 
                 const ::fixbug::LoginRequest* request,
                 ::fixbug::LoginResponse* response, 
@@ -34,14 +33,13 @@ int main(int argc, char** argv) {
     RpcProvider provider; 
     //加载配置文件
     provider.LoadConfig(); 
-    
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
 
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
     std::cout << "rpc_server_ip: " << (*config_map_ptr)["rpc_server_ip"] << std::endl;
     std::cout << "rpc_server_port: " << (*config_map_ptr)["rpc_server_port"] << std::endl;
     std::cout << "zookeeper_server_ip: " << (*config_map_ptr)["zookeeper_server_ip"] << std::endl;
     std::cout << "zookeeper_server_port:" << (*config_map_ptr)["zookeeper_server_port"] << std::endl;
-    DataBank::Unlock("config_map", DataBank::READ);
+    DataBank::Unlock(DataBank::READ);
     
     //发布一个服务，就是把服务填入map表里
     provider.NotifyService(new UserService); 

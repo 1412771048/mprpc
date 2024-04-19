@@ -32,7 +32,7 @@ private:
     std::unordered_map<std::string, ServiceInfo> m_serviceMap; // 服务名-服务的具体信息
 
 
-    muduo::net::EventLoop m_eventLoop;
+    muduo::net::EventLoop event_loop;
     void OnConnection(const muduo::net::TcpConnectionPtr& conn);
     void OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time);
 

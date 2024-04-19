@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 #把第三方依赖打包上传更小
 if [ ! -f "thirdparty.tgz" ]; then

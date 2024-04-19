@@ -9,6 +9,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/thirdparty/muduo/include
     ${PROJECT_SOURCE_DIR}/thirdparty/protobuf/include
     ${PROJECT_SOURCE_DIR}/thirdparty/simpleini
+    ${PROJECT_SOURCE_DIR}/thirdparty  #muduo库要用boost库的头文件
 ) 
 
 link_directories(

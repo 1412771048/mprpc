@@ -5,8 +5,8 @@ set -x
 if [ ! -f "thirdparty.tgz" ]; then
     tar cfzv thirdparty.tgz thirdparty/*
 fi
-
 rm -rf thirdparty/
+
 git add .
 git commit -m "push" 
 # 检查git commit命令的返回状态

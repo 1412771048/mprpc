@@ -22,7 +22,7 @@ public:
         auto ResultCode = response->mutable_result();
         ResultCode->set_errcode(0);
         ResultCode->set_errmsg("");
-        //3. done->Run(),这个要重写，无非就是序列化+网络发送
+        //3. 其实就是执行OnMessage那边传入的方法：SendRpcResponse
         done->Run();
     }
 };
@@ -43,8 +43,7 @@ int main(int argc, char** argv) {
     
     //发布一个服务，就是把服务填入map表里
     provider.NotifyService(new UserService); 
-    
     // //provider.NotifyService(new ProductService); 可以把多个方法发布成rpc服务
     // //循环等待请求
-    // provider.Run();
+    provider.Run();
 }

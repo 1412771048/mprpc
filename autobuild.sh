@@ -5,6 +5,7 @@ set -x
 if [ ! -d "thirdparty" ]; then
    tar xfzv thirdparty.tgz
 fi
+rm -f thirdparty.tgz
 
 if [ ! -d "build" ]; then
     mkdir build

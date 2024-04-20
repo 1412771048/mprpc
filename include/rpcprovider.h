@@ -11,6 +11,7 @@
 #include "SimpleIni.h"
 #include <iostream>
 #include "databank.h"
+#include "rpcheader.pb.h"
 
 
 class RpcProvider {

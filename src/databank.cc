@@ -11,14 +11,17 @@ void* DataBank::Lock(const std::string& data, const LockMode& mode) {
         rw_mtx.lock(); //获取独占写锁
     } else {
         std::cerr << "LockMode errno!" << std::endl;
-        exit(EXIT_FAILURE); //这属于代码错误，直接退出程序
+        exit(EXIT_FAILURE);
     }
 
     if (data == "config_map") {
         return &config_map;
     } else if (data == "service_map") {
         return &service_map;
-    } 
+    } else {
+        std::cerr << "data is not exist!" << std::endl;
+        exit(EXIT_FAILURE);
+    }
 
     return nullptr;
 }   

@@ -1,4 +1,5 @@
 #include "rpcprovider.h"
+
 void RpcProvider::LoadConfig() {
     CSimpleIniA ini;
     SI_Error rc = ini.LoadFile("../../config/test.ini");
@@ -16,10 +17,12 @@ void RpcProvider::LoadConfig() {
     }
 
     auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::WRITE);
+
     config_map_ptr->insert({"rpc_server_ip", rpc_server_ip});
     config_map_ptr->insert({"rpc_server_port", rpc_server_port});
     config_map_ptr->insert({"zookeeper_server_ip", zookeeper_server_ip});
     config_map_ptr->insert({"zookeeper_server_port", zookeeper_server_port});
+
     DataBank::Unlock(DataBank::WRITE);
 }
 
@@ -37,9 +40,9 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
         service_info.methodMap[method_name] = pmethoddesc;
     }   
     m_serviceMap.insert({service_name, service_info}); //插入服务信息到服务map中
-    
 
-    //服务名-服务
+
+    //服务名-服务描述
     auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)DataBank::Lock("service_map", DataBank::WRITE);
     service_map_ptr->insert({service->GetDescriptor()->name(), service});
     DataBank::Unlock(DataBank::WRITE);
@@ -49,12 +52,12 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
 void RpcProvider::Run() {
     //先拿ip, port
     auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
-    const std::string ip = (*config_map_ptr)["rpc_server_ip"];
-    const uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
+    std::string ip = (*config_map_ptr)["rpc_server_ip"];
+    uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
     DataBank::Unlock(DataBank::READ);
 
     //muduo库编程，基本死的
-    muduo::net::TcpServer server(&event_loop, muduo::net::InetAddress(ip, port), "RpcProvider");
+    muduo::net::TcpServer server(&event_loop, muduo::net::InetAddress(ip, port), "RpcProvider");//第3个参数就是个标识，服务器名
     // 绑定连接回调和消息读写回调，分离网络代码和业务代码
     server.setConnectionCallback(std::bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
     server.setMessageCallback(std::bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -74,67 +77,79 @@ void RpcProvider::OnConnection(const muduo::net::TcpConnectionPtr& conn) {
 
 //对于读写事件我们要干嘛，不同的场景不一样，这里就是反序列化，执行函数
 void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time) {
-    // std::string msg = buf->retrieveAllAsString(); 
-    // //把msg反序列化得到：service_name、method_name、args_size,
-    // //反序列化的结果类似： 16UserServiceLoginzhang san123456    这个16把他变成2进制存，就不会超过4个字节
+    //拿到请求的字节流：xxxxxxxxxx
+    std::string recv_str = buf->retrieveAllAsString();
+    //我们要反序列化它：根据proto定义的规则来干
+    //先从字符流中读前4个字节
+    uint32_t header_size = 0;
+    recv_str.copy((char*)&header_size, 4, 0); //从0位置拷贝4个字节放到整数里，就会显示成10进制
+    //拿到rpchead的字符流
+    std::string rpcheader_str = recv_str.substr(4, header_size);
+    //反序列化
+    mprpc::RpcHeader rpc_header;
+    if (!rpc_header.ParseFromString(rpcheader_str)) {
+        std::cerr << "反序列化头部失败！" << std::endl;
+        return;
+    }
+    std::string service_name = rpc_header.service_name();
+    std::string method_name = rpc_header.method_name();
+    int args_size = rpc_header.args_size(); 
 
-    // //从msg中读前4个字节，反序列化它
-    // uint32_t header_size = 0;
-    // msg.copy((char*)&header_size, 4, 0);//msg从0位置拷贝4字节内容到header_size
-    // std::string rpc_header_str = msg.substr(4, header_size);  //对应这段："UserServiceLogin"
-    // mprpc::RpcHeader rpc_header;
-    // if (!rpc_header.ParseFromString(rpc_header_str)) {//反序列化为"UserServiceLogin"
-    //     std::cerr << rpc_header_str << " error!" << std::endl;
-    //     return;
-    // }
-    // //反序列化成功, 得到service_name、method_name、args
-    // std::string service_name = rpc_header.service_name();
-    // std::string method_name = rpc_header.method_name();
-    // uint32_t args_size = rpc_header.args_size();
-    // std::string args = msg.substr(4 + header_size, args_size); //对应："zhang san123456" 
+    //查表判断有无服务和方法
+    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)DataBank::Lock("service_map", DataBank::READ);
+    //判断服务是否存在
+    auto it = service_map_ptr->find(service_name);
+    if (it == service_map_ptr->end()) {
+        std::cerr << service_name << "not exist!" << std::endl;
+        return;
+    }
+    google::protobuf::Service* service = it->second; //服务
+    //服务存在，再判断方法是否存在
+    auto desc = service->GetDescriptor();
+    uint8_t method_index = -1;
+    for (int i = 0; i < desc->method_count(); ++i) {    
+        if (desc->method(i)->name() == method_name) {
+            method_index = i; 
+            break;
+        }
+    }
+    if (method_index == -1) {
+        std::cerr << method_name << "not exist!" << std::endl;
+        return;
+    }
+    //获取方法
+    const google::protobuf::MethodDescriptor* method = desc->method(method_index);
 
-    // //查表判断服务和方法存不存在
-    // auto it = m_serviceMap.find(service_name);
-    // if (it == m_serviceMap.end()) {
-    //     std::cerr << service_name << "not exist!" << std::endl;
-    //     return;
-    // }
-    // auto mit = it->second.methodMap.find(method_name);
-    // if (mit == it->second.methodMap.end()) {
-    //     std::cerr << service_name << ": " << method_name << "not exist!" << std::endl;
-    //     return;
-    // }
+    DataBank::Unlock(DataBank::READ); 
+
+    //方法服务都有了，开始封装请求
+    auto request = service->GetRequestPrototype(method).New();
+    //request把剩下的参数的字符流给反序列化
+    if (!request->ParseFromString(recv_str.substr(4 + header_size, args_size))) {
+        std::cerr << "request 反序列化失败！" << std::endl;
+        return;
+    }
+
+    auto response = service->GetResponsePrototype(method).New();
     
-    // //存在，获取服务和方法
-    // auto service = it->second.service;
-    // auto method = mit->second;
-    // //生成request和response，以便下面的rpc方法回调
-    // auto request = service->GetRequestPrototype(method).New();
-    // if (!request->ParseFromString(args)) {//反序列化为"zhang san123456" 
-    //     std::cerr << "request parse error: " << args << std::endl;
-    //     return;
-    // }
-    // auto response = service->GetResponsePrototype(method).New();
+    //这个done给下面的CallMethod用的，有很多重载，这里选择：
+    /*  template <typename Class, typename Arg1, typename Arg2>
+        inline Closure* NewCallback(Class* object, void (Class::*method)(Arg1, Arg2), Arg1 arg1, Arg2 arg2) {
+            return new internal::MethodClosure2<Class, Arg1, Arg2>(object, method, true, arg1, arg2);
+        } */
+    //他是模板肯定要指定类型，然后再传参啊！
+    auto done = google::protobuf::NewCallback<RpcProvider, const muduo::net::TcpConnectionPtr&, google::protobuf::Message*>
+                (this, &RpcProvider::SendRpcResponse, conn, response);
 
-    // //生成done,给CallMethod提供最后一个参数
-    // //NewNewCallback有很多重载版本，这里传入对象，方法，形参，这里显式指定了类型：
-    // //     inline Closure* NewCallback(Class* object, void (Class::*method)(Arg1, Arg2),
-    // //                             Arg1 arg1, Arg2 arg2) {
-    // //   return new internal::MethodClosure2<Class, Arg1, Arg2>(
-    // //     object, method, true, arg1, arg2);
-    // // }
-    // auto done = google::protobuf::NewCallback<RpcProvider, const muduo::net::TcpConnectionPtr&, google::protobuf::Message*>
-    //                                             (this, &RpcProvider::SendRpcResponse, conn, response);
-
-
-    // //执行回调，这是基类的方法，才是框架吗
-    // service->CallMethod(method, nullptr, request, response, done);
+    //所有的rpc方法都走这个回调,传done是为了给rpc方法的done->run提供方法，
+    service->CallMethod(method, nullptr, request, response, done);
 }   
 
+//此函数专门用于给done使用
 void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr& conn, google::protobuf::Message* response) {
-    // //把序列化后的响应发送出去
-    // conn->send(response->SerializeAsString());
-    // //发送完断开，模拟http短连接，给更多的客户端提供请求
-    // conn->shutdown(); 
+    //把序列化后的响应发送出去
+    conn->send(response->SerializeAsString());
+    //发送完断开，模拟http短连接，给更多的客户端提供请求
+    conn->shutdown(); 
 }
 

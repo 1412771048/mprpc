@@ -209,13 +209,13 @@ class RpcHeader final :
   std::string* _internal_mutable_method_name();
   public:
 
-  // uint32 args_size = 3;
+  // int32 args_size = 3;
   void clear_args_size();
-  uint32_t args_size() const;
-  void set_args_size(uint32_t value);
+  int32_t args_size() const;
+  void set_args_size(int32_t value);
   private:
-  uint32_t _internal_args_size() const;
-  void _internal_set_args_size(uint32_t value);
+  int32_t _internal_args_size() const;
+  void _internal_set_args_size(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:mprpc.RpcHeader)
@@ -228,7 +228,7 @@ class RpcHeader final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr service_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr method_name_;
-    uint32_t args_size_;
+    int32_t args_size_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -345,22 +345,22 @@ inline void RpcHeader::set_allocated_method_name(std::string* method_name) {
   // @@protoc_insertion_point(field_set_allocated:mprpc.RpcHeader.method_name)
 }
 
-// uint32 args_size = 3;
+// int32 args_size = 3;
 inline void RpcHeader::clear_args_size() {
-  _impl_.args_size_ = 0u;
+  _impl_.args_size_ = 0;
 }
-inline uint32_t RpcHeader::_internal_args_size() const {
+inline int32_t RpcHeader::_internal_args_size() const {
   return _impl_.args_size_;
 }
-inline uint32_t RpcHeader::args_size() const {
+inline int32_t RpcHeader::args_size() const {
   // @@protoc_insertion_point(field_get:mprpc.RpcHeader.args_size)
   return _internal_args_size();
 }
-inline void RpcHeader::_internal_set_args_size(uint32_t value) {
+inline void RpcHeader::_internal_set_args_size(int32_t value) {
   
   _impl_.args_size_ = value;
 }
-inline void RpcHeader::set_args_size(uint32_t value) {
+inline void RpcHeader::set_args_size(int32_t value) {
   _internal_set_args_size(value);
   // @@protoc_insertion_point(field_set:mprpc.RpcHeader.args_size)
 }

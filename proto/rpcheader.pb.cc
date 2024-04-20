@@ -25,7 +25,7 @@ PROTOBUF_CONSTEXPR RpcHeader::RpcHeader(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.service_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.method_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.args_size_)*/0u
+  , /*decltype(_impl_.args_size_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RpcHeaderDefaultTypeInternal {
   PROTOBUF_CONSTEXPR RpcHeaderDefaultTypeInternal()
@@ -63,7 +63,7 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_rpcheader_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017rpcheader.proto\022\005mprpc\"I\n\tRpcHeader\022\024\n"
   "\014service_name\030\001 \001(\t\022\023\n\013method_name\030\002 \001(\t"
-  "\022\021\n\targs_size\030\003 \001(\rb\006proto3"
+  "\022\021\n\targs_size\030\003 \001(\005b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_rpcheader_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_rpcheader_2eproto = {
@@ -131,7 +131,7 @@ inline void RpcHeader::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.service_name_){}
     , decltype(_impl_.method_name_){}
-    , decltype(_impl_.args_size_){0u}
+    , decltype(_impl_.args_size_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.service_name_.InitDefault();
@@ -171,7 +171,7 @@ void RpcHeader::Clear() {
 
   _impl_.service_name_.ClearToEmpty();
   _impl_.method_name_.ClearToEmpty();
-  _impl_.args_size_ = 0u;
+  _impl_.args_size_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -201,7 +201,7 @@ const char* RpcHeader::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
         } else
           goto handle_unusual;
         continue;
-      // uint32 args_size = 3;
+      // int32 args_size = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _impl_.args_size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
@@ -258,10 +258,10 @@ uint8_t* RpcHeader::_InternalSerialize(
         2, this->_internal_method_name(), target);
   }
 
-  // uint32 args_size = 3;
+  // int32 args_size = 3;
   if (this->_internal_args_size() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_args_size(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_args_size(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -294,9 +294,9 @@ size_t RpcHeader::ByteSizeLong() const {
         this->_internal_method_name());
   }
 
-  // uint32 args_size = 3;
+  // int32 args_size = 3;
   if (this->_internal_args_size() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_args_size());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_args_size());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);

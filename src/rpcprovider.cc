@@ -1,10 +1,70 @@
 #include "rpcprovider.h"
 
-void RpcProvider::LoadConfig() {
+std::shared_mutex RpcProvider::rw_mtx; 
+bool RpcProvider::config_ok = false;
+std::unordered_map<std::string, std::string> RpcProvider::config_map;
+std::unordered_map<std::string, google::protobuf::Service*> RpcProvider::service_map;
+
+
+void* RpcProvider::Lock(const std::string& data, const LockMode& mode) {
+    if (mode == READ) {
+        rw_mtx.lock_shared(); //获取共享读锁
+    } else if (mode == WRITE) {
+        rw_mtx.lock(); //获取独占写锁
+    } else {
+        std::cerr << "LockMode errno!" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    if (data == "config_map") {
+        return &config_map;
+    } else if (data == "service_map") {
+        return &service_map;
+    } else {
+        std::cerr << "data is not exist!" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    return nullptr;
+}   
+
+void RpcProvider::Unlock(const LockMode& mode) {
+    if (mode == READ) {
+        rw_mtx.unlock_shared(); //释放共享读锁
+    } else if (mode == WRITE) {
+        rw_mtx.unlock(); //释放独占写锁
+    } else {
+        std::cerr << "LockMode errno!" << std::endl;
+        exit(EXIT_FAILURE); //这属于代码错误，直接退出程序
+    }
+}
+
+void RpcProvider::Init(int argc, char** argv) {
+    if (config_ok) {
+        return;
+    }
+
+	int opt = 0;
+	std::string conf = "";
+	while ((opt = getopt(argc, argv, "i:")) != -1) {
+		switch (opt) {
+			case 'i':
+				conf = optarg;
+				break;
+			default:
+				std::cout << "error! please input format: command -i <config_path>" << std::endl;	
+				exit(EXIT_FAILURE);	
+		}
+	}
+	if (conf == "") {
+		std::cout << "error! please input format: command -i <config_path>" << std::endl;	
+		exit(EXIT_FAILURE);
+    }
+
     CSimpleIniA ini;
-    SI_Error rc = ini.LoadFile("../../config/test.ini");
+    SI_Error rc = ini.LoadFile(conf.c_str());
     if (rc < 0) {
-        std::cerr << "Failed to open config file!" << std::endl;
+        std::cerr << conf << "加载失败，请检查输入的文件绝对路径！" << std::endl;
         exit(EXIT_FAILURE);
     }
     std::string rpc_server_ip = ini.GetValue("rpc", "server_ip", "");
@@ -12,49 +72,48 @@ void RpcProvider::LoadConfig() {
     std::string zookeeper_server_ip = ini.GetValue("zookeeper", "server_ip", "");
     std::string zookeeper_server_port = ini.GetValue("zookeeper", "server_port", "");
     if (rpc_server_ip.empty() || rpc_server_port.empty() || zookeeper_server_ip.empty() || zookeeper_server_port.empty()) {
-        std::cerr << "config file format errno!" << std::endl;
+        std::cerr << conf << "无效，请检查配置！" << std::endl;
         exit(EXIT_FAILURE);
     }
-
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::WRITE);
-
+    
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)Lock("config_map", RpcProvider::WRITE);
     config_map_ptr->insert({"rpc_server_ip", rpc_server_ip});
     config_map_ptr->insert({"rpc_server_port", rpc_server_port});
     config_map_ptr->insert({"zookeeper_server_ip", zookeeper_server_ip});
     config_map_ptr->insert({"zookeeper_server_port", zookeeper_server_port});
+    Unlock(RpcProvider::WRITE);
 
-    DataBank::Unlock(DataBank::WRITE);
+    config_ok = true;
 }
-
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
     //获取服务的具体描述：里面有服务名，方法数，每个方法名，都通过这个拿
-    auto pserverdesc = service->GetDescriptor(); 
-    std::string service_name = pserverdesc->name(); //获取服务名,即类名
-    int method_count = pserverdesc->method_count(); //获取方法数量，因为一个服务对象可以有多个方法
+    // auto pserverdesc = service->GetDescriptor(); 
+    // std::string service_name = pserverdesc->name(); //获取服务名,即类名
+    // int method_count = pserverdesc->method_count(); //获取方法数量，因为一个服务对象可以有多个方法
 
-    ServiceInfo service_info; 
-    service_info.service = service; 
-    for (int i = 0; i < method_count; i++) {
-        auto pmethoddesc = pserverdesc->method(i); //获取一个方法描述
-        std::string method_name = pmethoddesc->name(); //获取方法名，即函数名
-        service_info.methodMap[method_name] = pmethoddesc;
-    }   
-    m_serviceMap.insert({service_name, service_info}); //插入服务信息到服务map中
+    // ServiceInfo service_info; 
+    // service_info.service = service; 
+    // for (int i = 0; i < method_count; i++) {
+    //     auto pmethoddesc = pserverdesc->method(i); //获取一个方法描述
+    //     std::string method_name = pmethoddesc->name(); //获取方法名，即函数名
+    //     service_info.methodMap[method_name] = pmethoddesc;
+    // }   
+    // m_serviceMap.insert({service_name, service_info}); //插入服务信息到服务map中
 
 
     //服务名-服务描述
-    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)DataBank::Lock("service_map", DataBank::WRITE);
+    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", RpcProvider::WRITE);
     service_map_ptr->insert({service->GetDescriptor()->name(), service});
-    DataBank::Unlock(DataBank::WRITE);
+    RpcProvider::Unlock(RpcProvider::WRITE);
 }
   
 //启动网络服务，即muduo库编程
 void RpcProvider::Run() {
     //先拿ip, port
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)Lock("config_map", RpcProvider::READ);
     std::string ip = (*config_map_ptr)["rpc_server_ip"];
     uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
-    DataBank::Unlock(DataBank::READ);
+    RpcProvider::Unlock(RpcProvider::READ);
 
     //muduo库编程，基本死的
     muduo::net::TcpServer server(&event_loop, muduo::net::InetAddress(ip, port), "RpcProvider");//第3个参数就是个标识，服务器名
@@ -96,7 +155,7 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
     int args_size = rpc_header.args_size(); 
 
     //查表判断有无服务和方法
-    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)DataBank::Lock("service_map", DataBank::READ);
+    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", RpcProvider::READ);
     //判断服务是否存在
     auto it = service_map_ptr->find(service_name);
     if (it == service_map_ptr->end()) {
@@ -120,7 +179,7 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
     //获取方法
     const google::protobuf::MethodDescriptor* method = desc->method(method_index);
 
-    DataBank::Unlock(DataBank::READ); 
+    RpcProvider::Unlock(RpcProvider::READ); 
 
     //方法服务都有了，开始封装请求
     auto request = service->GetRequestPrototype(method).New();

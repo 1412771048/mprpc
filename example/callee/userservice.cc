@@ -1,5 +1,6 @@
-#include "user.pb.h"
 #include "rpcprovider.h"
+
+#include "user.pb.h"
 
 
 //服务端编程示例：把Login方法编程rpc方法
@@ -30,17 +31,15 @@ public:
 
 
 int main(int argc, char** argv) {
-    RpcProvider provider; 
-    //加载配置文件
-    provider.LoadConfig(); 
-
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)DataBank::Lock("config_map", DataBank::READ);
+    RpcProvider::Init(argc, argv); 
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", RpcProvider::READ);
     std::cout << "rpc_server_ip: " << (*config_map_ptr)["rpc_server_ip"] << std::endl;
     std::cout << "rpc_server_port: " << (*config_map_ptr)["rpc_server_port"] << std::endl;
     std::cout << "zookeeper_server_ip: " << (*config_map_ptr)["zookeeper_server_ip"] << std::endl;
     std::cout << "zookeeper_server_port:" << (*config_map_ptr)["zookeeper_server_port"] << std::endl;
-    DataBank::Unlock(DataBank::READ);
-    
+    RpcProvider::Unlock(RpcProvider::READ);
+
+    RpcProvider provider; 
     //发布一个服务，就是把服务填入map表里
     provider.NotifyService(new UserService); 
     // //provider.NotifyService(new ProductService); 可以把多个方法发布成rpc服务

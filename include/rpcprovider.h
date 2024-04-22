@@ -44,7 +44,7 @@ private:
     // } ServiceInfo;
     // std::unordered_map<std::string, ServiceInfo> m_serviceMap; // 服务名-服务的具体信息
 
-
+    void MuduoStart(const std::string& ip, const uint16_t port, const std::string& server_name, uint8_t thread_num);
     muduo::net::EventLoop event_loop;
     void OnConnection(const muduo::net::TcpConnectionPtr& conn);
     void OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time);

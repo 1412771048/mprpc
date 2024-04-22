@@ -85,23 +85,9 @@ void RpcProvider::Init(int argc, char** argv) {
 
     config_ok = true;
 }
+
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
-    //获取服务的具体描述：里面有服务名，方法数，每个方法名，都通过这个拿
-    // auto pserverdesc = service->GetDescriptor(); 
-    // std::string service_name = pserverdesc->name(); //获取服务名,即类名
-    // int method_count = pserverdesc->method_count(); //获取方法数量，因为一个服务对象可以有多个方法
-
-    // ServiceInfo service_info; 
-    // service_info.service = service; 
-    // for (int i = 0; i < method_count; i++) {
-    //     auto pmethoddesc = pserverdesc->method(i); //获取一个方法描述
-    //     std::string method_name = pmethoddesc->name(); //获取方法名，即函数名
-    //     service_info.methodMap[method_name] = pmethoddesc;
-    // }   
-    // m_serviceMap.insert({service_name, service_info}); //插入服务信息到服务map中
-
-
-    //服务名-服务描述
+   //服务名-服务描述
     auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", RpcProvider::WRITE);
     service_map_ptr->insert({service->GetDescriptor()->name(), service});
     RpcProvider::Unlock(RpcProvider::WRITE);
@@ -115,16 +101,20 @@ void RpcProvider::Run() {
     uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
     RpcProvider::Unlock(RpcProvider::READ);
 
+    MuduoStart(ip, port, "RpcProvider", 4); //启动muduo网络服务
+}
+
+void RpcProvider::MuduoStart(const std::string& ip, const uint16_t port, const std::string& server_name, uint8_t thread_num) {
     //muduo库编程，基本死的
-    muduo::net::TcpServer server(&event_loop, muduo::net::InetAddress(ip, port), "RpcProvider");//第3个参数就是个标识，服务器名
+    muduo::net::TcpServer server(&event_loop, muduo::net::InetAddress(ip, port), server_name);//第3个参数就是个标识，服务器名
     // 绑定连接回调和消息读写回调，分离网络代码和业务代码
     server.setConnectionCallback(std::bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
     server.setMessageCallback(std::bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     //设置线程数
-    server.setThreadNum(4);//一个io线程，三个工作线程
+    server.setThreadNum(thread_num);//一个io线程，三个工作线程
     //启动网络服务,后续有连接请求时，会调用connectioncallback，有消息读写请求时，会调用messagecallback
     server.start();
-    event_loop.loop();
+    event_loop.loop(); 
 }
 
 //对于新连接我们要干嘛

@@ -26,6 +26,23 @@ public:
         //3. 其实就是执行OnMessage那边传入的方法：SendRpcResponse
         done->Run();
     }
+
+
+    bool Register(uint32_t id, std::string name, std::string pwd) {
+        std::cout << "这是本地服务: Register,id: " << id << ", name: " << name << ", pwd: " << pwd << std::endl; 
+        return true;
+    }
+    void Register(::google::protobuf::RpcController* controller, 
+                const ::fixbug::RegisterRequest* request,
+                ::fixbug::RegisterResponse* response, 
+                ::google::protobuf::Closure* done) 
+    {
+        //就2步：1.装填RegisterResponse的proto 2. done->Run();
+        response->set_sucess(Register(request->id(), request->name(), request->pwd()));
+        response->mutable_result()->set_errmsg("");
+        response->mutable_result()->set_errcode(0);
+        done->Run();
+    }
 };
 
 

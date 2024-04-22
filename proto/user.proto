@@ -17,7 +17,20 @@ message LoginResponse { //登录响应
     bool sucess = 2;
 }
 
+//Register函数定义
+message RegisterRequest { 
+    uint32 id = 1;
+    string name = 2;
+    string pwd = 3;
+}
+message RegisterResponse {
+    ResultCode result = 1;
+    bool sucess = 2;
+}
+
+
+//rpc服务类,一个服务多个方法
 service UserServiceRpc {
     rpc Login(LoginRequest) returns(LoginResponse);
-
+    rpc Register(RegisterRequest) returns(RegisterResponse);
 }

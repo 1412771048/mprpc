@@ -72,7 +72,7 @@ void RpcProvider::Init(int argc, char** argv) {
     std::string zookeeper_server_ip = ini.GetValue("zookeeper", "server_ip", "");
     std::string zookeeper_server_port = ini.GetValue("zookeeper", "server_port", "");
     if (rpc_server_ip.empty() || rpc_server_port.empty() || zookeeper_server_ip.empty() || zookeeper_server_port.empty()) {
-        std::cerr << conf << "无效，请检查配置！" << std::endl;
+        std::cerr << conf << "内容无效，请检查！" << std::endl;
         exit(EXIT_FAILURE);
     }
     

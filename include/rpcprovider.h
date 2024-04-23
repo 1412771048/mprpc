@@ -12,6 +12,9 @@
 #include "muduo/net/TcpConnection.h"
 #include "SimpleIni.h"
 #include "rpcheader.pb.h"
+#include "rpccontroller.h"
+#include "rpcchannel.h"
+
 
 class RpcProvider {
 public:    

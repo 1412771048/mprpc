@@ -1,5 +1,4 @@
 #include <iostream>
-#include "rpcchannel.h"
 #include "rpcprovider.h"
 
 #include "user.pb.h"
@@ -21,22 +20,36 @@ int main(int argc, char** argv) {
     login_request.set_pwd("123456");
     fixbug::LoginResponse login_response;
 
+    MprpcControlleer controller; //记录rpc调用中的状态和错误信息
     //所有的rpc调用底层都是走MpRpcChannel重写的CallMethod函数
-    stub.Login(nullptr, &login_request, &login_response, nullptr);
-    if (login_response.result().errcode() == 0) {
-        std::cout << "rpc login success: " << login_response.sucess() << std::endl;
+    stub.Login(&controller, &login_request, &login_response, nullptr);
+    if (controller.Failed()) {
+        //说明rpc调用过程中出现错误
+        std::cout << controller.ErrorText() << std::endl;
     } else {
-        std::cout << "rpc login error: " << login_response.result().errmsg() << std::endl;
+        //rpc调用成功
+        if (login_response.result().errcode() == 0) {
+            std::cout << "rpc login success: " << login_response.sucess() << std::endl;
+        } else {
+            std::cout << "rpc login error: " << login_response.result().errmsg() << std::endl;
+        }
     }
+    
         
     fixbug::RegisterRequest register_request;
     register_request.set_name("lisi");
     register_request.set_pwd("123456");
     fixbug::RegisterResponse register_response;
-    stub.Register(nullptr, &register_request, &register_response, nullptr);
-    if (register_response.result().errcode() == 0) {
-        std::cout << "rpc register success: " << register_response.sucess() << std::endl;
+
+    controller.Reset();
+    stub.Register(&controller, &register_request, &register_response, nullptr);
+    if (controller.Failed()) {
+        std::cout << controller.ErrorText() << std::endl;
     } else {
-        std::cout << "rpc login error: " << register_response.result().errmsg() << std::endl;
+        if (register_response.result().errcode() == 0) {
+            std::cout << "rpc register success: " << register_response.sucess() << std::endl;
+        } else {
+            std::cout << "rpc login error: " << register_response.result().errmsg() << std::endl;
+        }
     }
 }

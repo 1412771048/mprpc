@@ -37,13 +37,6 @@ private:
 
     static std::unordered_map<std::string, google::protobuf::Service*> service_map; //供大家查服务方法是否存在，也设为静态
 
-    
-    // typedef struct ServiceInfo {
-    //     google::protobuf::Service* service;
-    //     std::unordered_map<std::string, const google::protobuf::MethodDescriptor*> methodMap;//方法名-方法具体描述
-    // } ServiceInfo;
-    // std::unordered_map<std::string, ServiceInfo> m_serviceMap; // 服务名-服务的具体信息
-
     void MuduoStart(const std::string& ip, const uint16_t port, const std::string& server_name, uint8_t thread_num);
     muduo::net::EventLoop event_loop;
     void OnConnection(const muduo::net::TcpConnectionPtr& conn);

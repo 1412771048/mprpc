@@ -49,17 +49,15 @@ void RpcProvider::Init(int argc, char** argv) {
 	while ((opt = getopt(argc, argv, "i:")) != -1) {
 		switch (opt) {
 			case 'i':
-				conf = optarg;
+                conf = optarg;
 				break;
-			default:
-				std::cout << "error! please input format: command -i <config_path>" << std::endl;	
-				exit(EXIT_FAILURE);	
 		}
 	}
-	if (conf == "") {
-		std::cout << "error! please input format: command -i <config_path>" << std::endl;	
-		exit(EXIT_FAILURE);
+    if (conf.empty()) {
+        std::cerr << "error! please input format: command -i <config_path>" << std::endl;	
+        exit(EXIT_FAILURE);
     }
+
 
     CSimpleIniA ini;
     SI_Error rc = ini.LoadFile(conf.c_str());
@@ -76,30 +74,30 @@ void RpcProvider::Init(int argc, char** argv) {
         exit(EXIT_FAILURE);
     }
     
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)Lock("config_map", RpcProvider::WRITE);
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)Lock("config_map", WRITE);
     config_map_ptr->insert({"rpc_server_ip", rpc_server_ip});
     config_map_ptr->insert({"rpc_server_port", rpc_server_port});
     config_map_ptr->insert({"zookeeper_server_ip", zookeeper_server_ip});
     config_map_ptr->insert({"zookeeper_server_port", zookeeper_server_port});
-    Unlock(RpcProvider::WRITE);
+    Unlock(WRITE);
 
     config_ok = true;
 }
 
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
    //服务名-服务描述
-    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", RpcProvider::WRITE);
+    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", WRITE);
     service_map_ptr->insert({service->GetDescriptor()->name(), service});
-    RpcProvider::Unlock(RpcProvider::WRITE);
+    RpcProvider::Unlock(WRITE);
 }
   
 //启动网络服务，即muduo库编程
 void RpcProvider::Run() {
     //先拿ip, port
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)Lock("config_map", RpcProvider::READ);
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)Lock("config_map", READ);
     std::string ip = (*config_map_ptr)["rpc_server_ip"];
     uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
-    RpcProvider::Unlock(RpcProvider::READ);
+    RpcProvider::Unlock(READ);
 
     MuduoStart(ip, port, "RpcProvider", 4); //启动muduo网络服务
 }
@@ -137,7 +135,7 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
     //反序列化
     mprpc::RpcHeader rpc_header;
     if (!rpc_header.ParseFromString(rpcheader_str)) {
-        std::cerr << "反序列化头部失败！" << std::endl;
+        LOG_ERROR("反序列化头部失败！");
         return;
     }
     std::string service_name = rpc_header.service_name();
@@ -145,11 +143,11 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
     int args_size = rpc_header.args_size(); 
 
     //查表判断有无服务和方法
-    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", RpcProvider::READ);
+    auto service_map_ptr = (std::unordered_map<std::string, google::protobuf::Service*>*)Lock("service_map", READ);
     //判断服务是否存在
     auto it = service_map_ptr->find(service_name);
     if (it == service_map_ptr->end()) {
-        std::cerr << service_name << "not exist!" << std::endl;
+        LOG_ERROR("service_name not exist!");
         return;
     }
     google::protobuf::Service* service = it->second; //服务
@@ -163,19 +161,19 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
         }
     }
     if (method_index == -1) {
-        std::cerr << method_name << "not exist!" << std::endl;
+        LOG_ERROR("%s not exist!", method_name);
         return;
     }
     //获取方法
     const google::protobuf::MethodDescriptor* method = desc->method(method_index);
 
-    RpcProvider::Unlock(RpcProvider::READ); 
+    RpcProvider::Unlock(READ); 
 
     //方法服务都有了，开始封装请求
     auto request = service->GetRequestPrototype(method).New();
     //request把剩下的参数的字符流给反序列化
     if (!request->ParseFromString(recv_str.substr(4 + header_size, args_size))) {
-        std::cerr << "request 反序列化失败！" << std::endl;
+        LOG_ERROR("request 反序列化失败！");
         return;
     }
 

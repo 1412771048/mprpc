@@ -6,12 +6,12 @@
 //客户端编程示例：
 int main(int argc, char** argv) {
     RpcProvider::Init(argc, argv);
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", RpcProvider::READ);
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", READ);
     std::cout << "rpc_server_ip: " << (*config_map_ptr)["rpc_server_ip"] << std::endl;
     std::cout << "rpc_server_port: " << (*config_map_ptr)["rpc_server_port"] << std::endl;
     std::cout << "zookeeper_server_ip: " << (*config_map_ptr)["zookeeper_server_ip"] << std::endl;
     std::cout << "zookeeper_server_port:" << (*config_map_ptr)["zookeeper_server_port"] << std::endl;
-    RpcProvider::Unlock(RpcProvider::READ);
+    RpcProvider::Unlock(READ);
 
     //客户端就用stub类调用rpc服务
     fixbug::UserServiceRpc_Stub stub(new MpRpcChannel);

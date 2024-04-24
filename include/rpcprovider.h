@@ -14,14 +14,12 @@
 #include "rpcheader.pb.h"
 #include "rpccontroller.h"
 #include "rpcchannel.h"
+#include "loger.h"
+#include "typedef.h"
 
 
 class RpcProvider {
 public:    
-    typedef enum LockMode {
-        READ,
-        WRITE
-    } LockMode;
     static void* Lock(const std::string& data, const LockMode& mode);
     static void Unlock(const LockMode& mode);
 

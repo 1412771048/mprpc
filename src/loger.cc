@@ -6,13 +6,13 @@ Loger::Loger() {
         std::string file_name = "";
         auto time = GetTime();
         while (1) {
-            file_name = time.first + ".txt";
+            file_name = "../log/" + time.first + ".txt";
             FILE* fp = fopen(file_name.c_str(), "a+"); //以追加和读取的权限打开文件
             if (!fp) {
-                std::cout << "open file:" << file_name << " error!" << std::endl;
+                std::cerr << "open file:" << file_name << " error!" << std::endl;
                 exit(EXIT_FAILURE);
             }
-            std::string msg = time.second + lock_queue.pop();
+            std::string msg = time.second + lock_queue.pop(); //调用pop无数据就会阻塞
             fputs(msg.c_str(), fp);
             fclose(fp);  
         }

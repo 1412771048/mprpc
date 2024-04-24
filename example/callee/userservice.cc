@@ -48,13 +48,16 @@ public:
 
 
 int main(int argc, char** argv) {
+    //把日志写入队列，再std::string msg = time.second + lock_queue.pop();加上时间头部，写入文件
+    // LOG_ERROR("%s:%s:%d", __FILE__, __FUNCTION__, __LINE__);//哪个源文件的哪个函数的哪一行
+    
     RpcProvider::Init(argc, argv); 
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", RpcProvider::READ);
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", READ);
     std::cout << "rpc_server_ip: " << (*config_map_ptr)["rpc_server_ip"] << std::endl;
     std::cout << "rpc_server_port: " << (*config_map_ptr)["rpc_server_port"] << std::endl;
     std::cout << "zookeeper_server_ip: " << (*config_map_ptr)["zookeeper_server_ip"] << std::endl;
     std::cout << "zookeeper_server_port:" << (*config_map_ptr)["zookeeper_server_port"] << std::endl;
-    RpcProvider::Unlock(RpcProvider::READ);
+    RpcProvider::Unlock(READ);
 
     RpcProvider provider; 
     //发布一个服务，就是把服务填入map表里

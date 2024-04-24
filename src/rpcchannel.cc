@@ -12,10 +12,10 @@ void MpRpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method, 
     }
 
     //网络发送并接受响应，就使用简单的socket编程吧，不需要什么高性能
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", RpcProvider::READ);
+    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", READ);
     std::string ip = (*config_map_ptr)["rpc_server_ip"];
     uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
-    RpcProvider::Unlock(RpcProvider::READ);
+    RpcProvider::Unlock(READ);
 
     socket_send_res res = SocketSend(ip, port, send_str, controller);
     if (controller->Failed()) {

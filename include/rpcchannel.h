@@ -1,8 +1,6 @@
 #pragma once
 #include <arpa/inet.h> 
-#include "google/protobuf/service.h"
 #include "rpcprovider.h"
-#include "rpcheader.pb.h"
 
 
 typedef struct socket_send_res {
@@ -20,9 +18,9 @@ public:
                     const google::protobuf::Message* request, google::protobuf::Message* response, google::protobuf::Closure* done);
 private:
     //序列化数据，返回序列化后的字符串
-    std::string GetSendstr(const google::protobuf::MethodDescriptor* method, const google::protobuf::Message* request);
+    std::string GetSendstr(const google::protobuf::MethodDescriptor* method, google::protobuf::RpcController* controller, const google::protobuf::Message* request);
 
     //调用socket发送数据，返回recv_size，结果写入recv_buf
-    socket_send_res SocketSend(const std::string& ip, const std::uint16_t port, const std::string& send_str);
+    socket_send_res SocketSend(const std::string& ip, const std::uint16_t port, const std::string& send_str, google::protobuf::RpcController* controller);
 };
 

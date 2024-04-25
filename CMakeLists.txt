@@ -6,10 +6,11 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/lib)  #库生成位置
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/proto
+    ${PROJECT_SOURCE_DIR}/thirdparty  #muduo库要用boost库的头文件
     ${PROJECT_SOURCE_DIR}/thirdparty/muduo/include
     ${PROJECT_SOURCE_DIR}/thirdparty/protobuf/include
     ${PROJECT_SOURCE_DIR}/thirdparty/simpleini
-    ${PROJECT_SOURCE_DIR}/thirdparty  #muduo库要用boost库的头文件
+    ${PROJECT_SOURCE_DIR}/thirdparty/dbg-marco
 ) 
 link_directories(
     ${PROJECT_SOURCE_DIR}/lib 

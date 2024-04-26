@@ -3,4 +3,4 @@ file(GLOB_RECURSE src
     ../thirdparty/simpleini/*.cc 
 )
 add_library(mprpc ${src}) #muduo库是静态库，这里只能生成静态库
-target_link_libraries(mprpc muduo_net muduo_base pthread)
+target_link_libraries(mprpc muduo_net muduo_base pthread protobuf zookeeper_mt) #多线程的zookeeper库

@@ -161,7 +161,7 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
         }
     }
     if (method_index == -1) {
-        LOG_ERROR("%s not exist!", method_name);
+        LOG_ERROR("%s not exist!", method_name.c_str());
         return;
     }
     //获取方法

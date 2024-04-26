@@ -36,5 +36,30 @@
 加一把锁保证线程安全，且队列无数据时，写线程(消费者)就不要去抢锁了，让生产者去拿锁：信号量/条件变量
 这个日志模块以后可以移植到其他项目里
 
+zookeeper：分布式协调服务，可以充当服务注册中心，提供分布式锁(不同主机上的进程如何安全的访问分布式服务)
+功能很多，我们这里就用的是服务注册中心这个功能
+(项目表达很重要，你为什么用这个？你知道什么就聊什么，我这个项目里需要xxx，所以我用到了它的xx功能，虽然他还有其他的功能，但我没用到，不太了解，我只知道xxx)
 
-https://archive.apache.org/dist/zookeeper/
+下载：好多新版本没有configure了...
+https://archive.apache.org/dist/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
+cd src/c
+./configure
+打开makefile 548行，AM_CFLAGS = -Wall -Werror  去掉-Werror
+make -j4
+make install
+至此就获取c api编程接口，但原生api有缺点：1.不会自动发送心跳 2.设置监听watch是一次性的，触发后要重新设置；
+3. znode节点只存储字节数组，若要存储对象，需手动转换成字节数组(protobuf)
+
+打开conf，改名为zoo.cfg，dataDir=/home/gyl/workspace/mprpc/output/zk_data
+cd bin, ./zkServer.sh start
+./zkCli.sh 客户端连接；
+所以zk的数据组织结构是树状
+ls / 列出当前目录节点; get /zookeeper获取节点数据; 
+set /zookeeper 10 设置节点数据; 
+create /test 创建节点; delete /test 删除节点; deleteall /test 删除节点及子节点;
+我们主要关注2个数据：第一行设置的数据，以及ephmeralOwner = 0x0 永久节点/临时节点
+每个rpc服务提供者都对应一个节点，要定时发送心跳，若超时，临时节点就被删掉了
+我们采用/UserServiceRpc为一个节点名，子节点是它的方法如/Login,里面的数据就是ip port
+
+
+zk有一个watch机制，类似发布订阅，事件触发，通知客户端

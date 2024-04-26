@@ -10,7 +10,6 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/thirdparty/muduo/include
     ${PROJECT_SOURCE_DIR}/thirdparty/protobuf/include
     ${PROJECT_SOURCE_DIR}/thirdparty/simpleini
-    ${PROJECT_SOURCE_DIR}/thirdparty/dbg-marco
 ) 
 link_directories(
     ${PROJECT_SOURCE_DIR}/lib 

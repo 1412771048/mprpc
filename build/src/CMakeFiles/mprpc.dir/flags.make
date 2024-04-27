@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/gyl/workspace/mprpc/include -I/home/gyl/workspace/mprpc/proto -I/home/gyl/workspace/mprpc/thirdparty -I/home/gyl/workspace/mprpc/thirdparty/muduo/include -I/home/gyl/workspace/mprpc/thirdparty/protobuf/include -I/home/gyl/workspace/mprpc/thirdparty/simpleini -I/home/gyl/workspace/mprpc/thirdparty/zookeeper/include
 
-CXX_FLAGS =  -g -std=c++20
+CXX_FLAGS =  -g -fsanitize=address -fno-omit-frame-pointer -std=c++20
 

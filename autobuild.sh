@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
-set -x
+#!/bin/bash
 
-if [ ! -d "build" ]; then
-    mkdir build
-fi
+set -e
 
-cd build/ && rm -rf * && cmake .. && make -j4
+rm -rf `pwd`/build/*
+cd `pwd`/build &&
+	cmake .. &&
+	make
+cd ..
+cp -r `pwd`/src/include `pwd`/lib

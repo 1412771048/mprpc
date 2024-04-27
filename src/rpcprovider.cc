@@ -131,7 +131,7 @@ void RpcProvider::MuduoStart(const std::string& ip, const uint16_t port, const s
     event_loop.loop(); 
 }
 
-//对于新连接我们要干嘛
+//对于连接事件我们要干嘛
 void RpcProvider::OnConnection(const muduo::net::TcpConnectionPtr& conn) {
     if (!conn->connected()) {//断开连接了
         conn->shutdown(); //关闭文件描述符，对应socket的close
@@ -204,14 +204,19 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
     auto done = google::protobuf::NewCallback<RpcProvider, const muduo::net::TcpConnectionPtr&, google::protobuf::Message*>
                 (this, &RpcProvider::SendRpcResponse, conn, response);
 
-    //所有的rpc方法都走这个回调,传done是为了给rpc方法的done->run提供方法，
+    //所有的rpc方法都走这个回调,传done是为了给rpc方法的done->run提供方法
     service->CallMethod(method, nullptr, request, response, done);
 }   
 
 //此函数专门用于给done使用
 void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr& conn, google::protobuf::Message* response) {
     //把序列化后的响应发送出去
-    conn->send(response->SerializeAsString());
+    std::string response_str;
+    if (!response->SerializeToString(&response_str)) {
+        std::cout << "serialize response_str error!" << std::endl;
+        return;
+    }
+    conn->send(response_str);
     //发送完断开，模拟http短连接，给更多的客户端提供请求
     conn->shutdown(); 
 }

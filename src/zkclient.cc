@@ -26,7 +26,7 @@ void ZkClient::Start() {
     zookeeper_init(api调用线程)调用后会创建2个线程：网络io、watcher回调
     */
     //参数1：ip:host,参数2：watch回调，参数3：超时时间
-    zhandle_ = zookeeper_init(connect_str.c_str(), watcher, 30000, nullptr, nullptr, 0);
+    zhandle_ = zookeeper_init(connect_str.c_str(), watcher, 60000, nullptr, nullptr, 0);
     if (zhandle_ == nullptr) {
         std::cout << "zookeeper_init error" << std::endl;
         exit(EXIT_FAILURE);

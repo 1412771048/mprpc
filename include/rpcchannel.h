@@ -6,7 +6,7 @@
 typedef struct socket_send_res {
     char recv_buf[1024];
     int recv_size;
-    socket_send_res(): recv_size(-1) {memset(recv_buf, 0, sizeof(recv_buf));}
+    // socket_send_res(): recv_size(-1) {memset(recv_buf, 0, sizeof(recv_buf));}
 } socket_send_res;
 
 

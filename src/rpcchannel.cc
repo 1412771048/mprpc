@@ -19,14 +19,14 @@ void MpRpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method, 
     // uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
     // RpcProvider::Unlock(READ);
 
-    socket_send_res res = SocketSend(send_str, method, controller);
+    socket_send_res ret = SocketSend(send_str, method, controller);
     if (controller->Failed()) {
         return;
     }
 
     //拿到recv_buf，反序列化填到response,std::string response_str(recv_buf); 
     //出现问题：recv_buf有\0后面就截断了，如recv_buf = {'a', '\0', 'b'}
-    if (!response->ParseFromArray(res.recv_buf, res.recv_size)) {
+    if (!response->ParseFromArray(ret.recv_buf, ret.recv_size)) {
         controller->SetFailed("response parse error!");
         return;
     } 
@@ -57,7 +57,7 @@ std::string MpRpcChannel::GetSendstr(const google::protobuf::MethodDescriptor* m
     return send_str + rpc_header_str + args_str;
 }
 socket_send_res MpRpcChannel::SocketSend(const std::string& send_str, const google::protobuf::MethodDescriptor* method, google::protobuf::RpcController* controller) {
-    socket_send_res res;
+    socket_send_res res = {{0}, -1};
     int fd = socket(AF_INET, SOCK_STREAM, 0);
         if (fd == -1) {
         controller->SetFailed("socketfd create error!");
@@ -90,12 +90,23 @@ socket_send_res MpRpcChannel::SocketSend(const std::string& send_str, const goog
     if (send(fd, send_str.c_str(), send_str.size(), 0) == -1) {
         controller->SetFailed("socket send error!");
         close(fd);
-        exit(EXIT_FAILURE);
+        return res;
     }
-    if (res.recv_size = recv(fd, res.recv_buf, sizeof(res.recv_buf), 0) == -1) {
+    if (recv(fd, res.recv_buf, sizeof(res.recv_buf), 0) == -1) {
         controller->SetFailed("socket recv error!");
         close(fd);
-        exit(EXIT_FAILURE);
+        return res;
+    }
+    res.recv_size = recv(fd, res.recv_buf, sizeof(res.recv_buf), 0);
+    if (res.recv_size == -1) {
+        controller->SetFailed("socket recv error!");
+        close(fd);
+        return res;
+    }
+    else if (res.recv_size == 0) {
+        controller->SetFailed("socket connect close!");
+        close(fd);
+        return res;
     }
     close(fd);
     return res;

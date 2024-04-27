@@ -370,4 +370,10 @@ src/CMakeFiles/mprpc.dir/rpcchannel.cc.o: \
  /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /usr/include/c++/11/condition_variable \
- /home/gyl/workspace/mprpc/include/typedef.h
+ /home/gyl/workspace/mprpc/include/typedef.h \
+ /home/gyl/workspace/mprpc/include/zkclient.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/zookeeper.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/proto.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/zookeeper_version.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/recordio.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/zookeeper.jute.h

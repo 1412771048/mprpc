@@ -14,7 +14,9 @@ int main(int argc, char** argv) {
     RpcProvider::Unlock(READ);
 
     //客户端就用stub类调用rpc服务
-    fixbug::UserServiceRpc_Stub stub(new MpRpcChannel);
+    // auto ptr = new MpRpcChannel;
+    auto ptr = std::make_unique<MpRpcChannel>(); //堆区创建了一个对象
+    fixbug::UserServiceRpc_Stub stub(&(*ptr)); //传入对象地址，其实这里直接栈区创建更简单
     fixbug::LoginRequest login_request;
     login_request.set_name("zhangsan");
     login_request.set_pwd("123456");

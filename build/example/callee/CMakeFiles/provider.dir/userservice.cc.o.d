@@ -372,4 +372,10 @@ example/callee/CMakeFiles/provider.dir/userservice.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /usr/include/c++/11/condition_variable \
  /home/gyl/workspace/mprpc/include/typedef.h \
+ /home/gyl/workspace/mprpc/include/zkclient.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/zookeeper.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/proto.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/zookeeper_version.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/recordio.h \
+ /home/gyl/workspace/mprpc/thirdparty/zookeeper/include/zookeeper/zookeeper.jute.h \
  /home/gyl/workspace/mprpc/proto/user.pb.h

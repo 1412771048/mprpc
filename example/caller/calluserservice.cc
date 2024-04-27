@@ -38,20 +38,20 @@ int main(int argc, char** argv) {
     }
     
         
-    fixbug::RegisterRequest register_request;
-    register_request.set_name("lisi");
-    register_request.set_pwd("123456");
-    fixbug::RegisterResponse register_response;
+    // fixbug::RegisterRequest register_request;
+    // register_request.set_name("lisi");
+    // register_request.set_pwd("123456");
+    // fixbug::RegisterResponse register_response;
 
-    controller.Reset();
-    stub.Register(&controller, &register_request, &register_response, nullptr);
-    if (controller.Failed()) {
-        std::cout << controller.ErrorText() << std::endl;
-    } else {
-        if (register_response.result().errcode() == 0) {
-            std::cout << "rpc register success: " << register_response.sucess() << std::endl;
-        } else {
-            std::cout << "rpc login error: " << register_response.result().errmsg() << std::endl;
-        }
-    }
+    // controller.Reset();
+    // stub.Register(&controller, &register_request, &register_response, nullptr);
+    // if (controller.Failed()) {
+    //     std::cout << controller.ErrorText() << std::endl;
+    // } else {
+    //     if (register_response.result().errcode() == 0) {
+    //         std::cout << "rpc register success: " << register_response.sucess() << std::endl;
+    //     } else {
+    //         std::cout << "rpc login error: " << register_response.result().errmsg() << std::endl;
+    //     }
+    // }
 }

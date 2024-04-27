@@ -66,5 +66,7 @@ create /test 创建节点; delete /test 删除节点; deleteall /test 删除节�
 
 zk有一个watch机制，类似发布订阅，事件触发，通知客户端
 
-
 如何移植到项目里：服务端在run的时候，注册到zk即可，注意要开启zkserver
+
+
+客户端数据发过去都能正常显示，但返回的response为什么没有填入数据呢，都是默认值

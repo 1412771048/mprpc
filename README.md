@@ -47,8 +47,10 @@ cd src/c
 打开makefile 548行，AM_CFLAGS = -Wall -Werror  去掉-Werror
 make -j4
 make install
-至此就获取c api编程接口，但原生api有缺点：1.不会自动发送心跳 2.设置监听watch是一次性的，触发后要重新设置；
-3. znode节点只存储字节数组，若要存储对象，需手动转换成字节数组(protobuf)
+至此就获取c api编程接口，但原生api有缺点：1. 设置监听watch是一次性的，触发后要重新设置；
+2. znode节点只存储字节数组，若要存储对象，需手动转换成字节数组(protobuf)
+他会定期发送心跳
+
 
 打开conf，改名为zoo.cfg，dataDir=/home/gyl/workspace/mprpc/output/zk_data
 cd bin, ./zkServer.sh start
@@ -58,8 +60,11 @@ ls / 列出当前目录节点; get /zookeeper获取节点数据;
 set /zookeeper 10 设置节点数据; 
 create /test 创建节点; delete /test 删除节点; deleteall /test 删除节点及子节点;
 我们主要关注2个数据：第一行设置的数据，以及ephmeralOwner = 0x0 永久节点/临时节点
-每个rpc服务提供者都对应一个节点，要定时发送心跳，若超时，临时节点就被删掉了
+每个rpc服务提供者都对应一个节点，要定时发送ping心跳，若超时，临时节点就被删掉了
 我们采用/UserServiceRpc为一个节点名，子节点是它的方法如/Login,里面的数据就是ip port
 
 
 zk有一个watch机制，类似发布订阅，事件触发，通知客户端
+
+
+如何移植到项目里：服务端在run的时候，注册到zk即可，注意要开启zkserver

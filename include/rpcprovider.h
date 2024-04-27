@@ -16,7 +16,7 @@
 #include "rpcchannel.h"
 #include "loger.h"
 #include "typedef.h"
-
+#include "zkclient.h"
 
 class RpcProvider {
 public:    

@@ -21,6 +21,6 @@ private:
     std::string GetSendstr(const google::protobuf::MethodDescriptor* method, google::protobuf::RpcController* controller, const google::protobuf::Message* request);
 
     //调用socket发送数据，返回recv_size，结果写入recv_buf
-    socket_send_res SocketSend(const std::string& ip, const std::uint16_t port, const std::string& send_str, google::protobuf::RpcController* controller);
+    socket_send_res SocketSend(const std::string& send_str, const google::protobuf::MethodDescriptor* method, google::protobuf::RpcController* controller);
 };
 

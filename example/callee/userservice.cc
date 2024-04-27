@@ -21,7 +21,7 @@ public:
         //2. 结果填入response
         response->set_sucess(res);
         auto ResultCode = response->mutable_result();
-        ResultCode->set_errcode(0);
+        ResultCode->set_errcode(1);
         ResultCode->set_errmsg("");
         //3. 其实就是执行OnMessage那边传入的方法：SendRpcResponse
         done->Run();
@@ -40,7 +40,7 @@ public:
         //就2步：1.装填RegisterResponse的proto 2. done->Run();
         response->set_sucess(Register(request->id(), request->name(), request->pwd()));
         response->mutable_result()->set_errmsg("");
-        response->mutable_result()->set_errcode(0);
+        response->mutable_result()->set_errcode(1);
         done->Run();
     }
 };

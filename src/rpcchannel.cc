@@ -5,6 +5,8 @@
 void MpRpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method, google::protobuf::RpcController* controller, 
                     const google::protobuf::Message* request, google::protobuf::Message* response, google::protobuf::Closure* done)
 {   
+
+    
     //序列化
     std::string send_str = GetSendstr(method, controller, request);
     if (controller->Failed()) {
@@ -12,12 +14,12 @@ void MpRpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method, 
     }
 
     //网络发送并接受响应，就使用简单的socket编程吧，不需要什么高性能
-    auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", READ);
-    std::string ip = (*config_map_ptr)["rpc_server_ip"];
-    uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
-    RpcProvider::Unlock(READ);
+    // auto config_map_ptr = (std::unordered_map<std::string, std::string>*)RpcProvider::Lock("config_map", READ);
+    // std::string ip = (*config_map_ptr)["rpc_server_ip"];
+    // uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
+    // RpcProvider::Unlock(READ);
 
-    socket_send_res res = SocketSend(ip, port, send_str, controller);
+    socket_send_res res = SocketSend(send_str, method, controller);
     if (controller->Failed()) {
         return;
     }
@@ -54,29 +56,46 @@ std::string MpRpcChannel::GetSendstr(const google::protobuf::MethodDescriptor* m
     send_str.insert(0, std::string((char*)&header_size, 4)); //前4个字节放ehader_size的2进制比表示
     return send_str + rpc_header_str + args_str;
 }
-
-socket_send_res MpRpcChannel::SocketSend(const std::string& ip, const std::uint16_t port, const std::string& send_str, google::protobuf::RpcController* controller) {
+socket_send_res MpRpcChannel::SocketSend(const std::string& send_str, const google::protobuf::MethodDescriptor* method, google::protobuf::RpcController* controller) {
     socket_send_res res;
     int fd = socket(AF_INET, SOCK_STREAM, 0);
         if (fd == -1) {
         controller->SetFailed("socketfd create error!");
         return res;
     } 
+    //之前是从客户端配置文件里读，但配置文件有如何能实时更新呢，现在要从zk查询
+    ZkClient zk_cli;
+    zk_cli.Start();
+    std::string method_path = std::string("/") + method->service()->name() + std::string("/") + method->name();
+    std::string ip_port = zk_cli.GetData(method_path.c_str());
+    if (ip_port == "") {
+        controller->SetFailed("method path not exist!");
+        exit(EXIT_FAILURE);
+    }
+    //开始拆出ip和port
+    int idx = ip_port.find(":");
+    if (idx == -1) {
+        controller->SetFailed(method_path + " addredd error!");
+        exit(EXIT_FAILURE);
+    }
+    std::string ip = std::string(ip_port.begin(), ip_port.begin() + idx);
+    uint16_t port = stoi(std::string(ip_port.begin() + idx + 1, ip_port.end()));
+    
     sockaddr_in server_addr = {AF_INET, htons(port), inet_addr(ip.c_str())};
     if (connect(fd, (sockaddr*)&server_addr, sizeof(server_addr)) == -1) {
         controller->SetFailed("socket connect error!");
         close(fd);
-        return res;
+        exit(EXIT_FAILURE);
     }
     if (send(fd, send_str.c_str(), send_str.size(), 0) == -1) {
         controller->SetFailed("socket send error!");
         close(fd);
-        return res; 
+        exit(EXIT_FAILURE);
     }
     if (res.recv_size = recv(fd, res.recv_buf, sizeof(res.recv_buf), 0) == -1) {
         controller->SetFailed("socket recv error!");
         close(fd);
-        return res;
+        exit(EXIT_FAILURE);
     }
     close(fd);
     return res;

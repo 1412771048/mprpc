@@ -57,7 +57,8 @@ void ZkClient::Create(const char* path, const char* data, int datalen, int state
 //对应get命令
 std::string ZkClient::GetData(const char* path) {
     char buf[64] = {0};
-    if (zoo_get(zhandle_, path, 0, buf, nullptr, nullptr) != ZOK) {
+    int buflen = sizeof(buf);
+    if (zoo_get(zhandle_, path, 0, buf, &buflen, nullptr) != ZOK) {
         std::cout <<  "zookeeper_get error" << std::endl;
         return "";
     }

@@ -99,6 +99,22 @@ void RpcProvider::Run() {
     uint16_t port = stoi((*config_map_ptr)["rpc_server_port"]);
     RpcProvider::Unlock(READ);
 
+    //rpc提供方要向zk注册节点，把服务和方法以节点的形式添加到zk中
+    ZkClient zk_cli;
+    zk_cli.Start(); //zkclinet也会发起连接，我们下面的muduo又是连接
+    //session的timeout时间是30s，cli每1/3的timeout发送一个心跳，重置timeout
+    for (auto& it: service_map) {
+        std::string service_path = "/" + it.first; /* /UserServiceRpc  */
+        zk_cli.Create(service_path.c_str(), nullptr, 0);//先把服务名注册为一个父节点，再把所有的方法注册为它的子节点
+        auto desc = it.second->GetDescriptor();
+        for (int i = 0; i < desc->method_count(); ++i) {
+            std::string method_path = service_path + "/" + desc->method(i)->name(); /* /UserServiceRpc/Login  */
+            //方法都注册为临时性节点,status不是0就是临时结点；为啥要临时节点：防止节点挂了，节点本身不删，服务删掉，别人就调用不了了
+            std::string data = ip + ":" + std::to_string(port);
+            zk_cli.Create(method_path.c_str(), data.c_str(), data.size(), ZOO_EPHEMERAL); 
+        }
+    }
+
     MuduoStart(ip, port, "RpcProvider", 4); //启动muduo网络服务
 }
 

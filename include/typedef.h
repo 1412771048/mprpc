@@ -10,21 +10,14 @@ typedef enum LogLevel {
     ERROR
 } LogLevel;
 
-
-#define LOG_INFO(msg, ...)\
+#define LOG(level, msg, ...)\
     do {\
         Loger& loger = Loger::GetInstance();\
-        loger.SetLogLevel(INFO);\
+        loger.SetLogLevel(level);\
         char buf[1024] = {0};\
-        snprintf(buf, sizeof(buf), (std::string("[INFO] ") + msg + "\n").c_str(), ##__VA_ARGS__);\
+        snprintf(buf, sizeof(buf), (std::string("[") + #level + "] " + msg + "\n").c_str(), ##__VA_ARGS__);\
         loger.Log(buf);\
     } while (0);
+#define LOG_INFO(msg, ...) LOG(INFO, msg, ##__VA_ARGS__)
+#define LOG_ERROR(msg, ...) LOG(ERROR, msg, ##__VA_ARGS__)
 
-#define LOG_ERROR(msg, ...)\
-    do {\
-        Loger& loger = Loger::GetInstance();\
-        loger.SetLogLevel(ERROR);\
-        char buf[1024] = {0};\
-        snprintf(buf, sizeof(buf), (std::string("[ERROR] ") + msg + "\n").c_str(), ##__VA_ARGS__);\
-        loger.Log(buf);\
-    } while (0);

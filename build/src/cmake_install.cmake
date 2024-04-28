@@ -1,4 +1,4 @@
-# Install script for directory: /home/gyl/workspace/mprpc/src
+# Install script for directory: /home/gyl/work/mprpc/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

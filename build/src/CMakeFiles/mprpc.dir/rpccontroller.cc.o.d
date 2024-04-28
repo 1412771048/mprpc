@@ -1,8 +1,6 @@
 src/CMakeFiles/mprpc.dir/rpccontroller.cc.o: \
- /home/gyl/workspace/mprpc/src/rpccontroller.cc \
- /usr/include/stdc-predef.h \
- /home/gyl/workspace/mprpc/include/rpccontroller.h \
- /usr/include/c++/11/string \
+ /home/gyl/work/mprpc/src/rpccontroller.cc /usr/include/stdc-predef.h \
+ /home/gyl/work/mprpc/include/rpccontroller.h /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -140,12 +138,12 @@ src/CMakeFiles/mprpc.dir/rpccontroller.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/service.h \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/callback.h \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/macros.h \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/port_def.inc \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/port_undef.inc \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/common.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/service.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/callback.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/macros.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/port_def.inc \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/port_undef.inc \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/common.h \
  /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
  /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/ranges_algo.h \
@@ -230,13 +228,13 @@ src/CMakeFiles/mprpc.dir/rpccontroller.cc.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h /usr/include/c++/11/set \
  /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/platform_macros.h \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/port.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/platform_macros.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/port.h \
  /usr/include/assert.h /usr/include/c++/11/stdlib.h \
  /usr/include/c++/11/cstddef /usr/include/string.h /usr/include/strings.h \
  /usr/include/byteswap.h \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/stringpiece.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/stringpiece.h \
  /usr/include/c++/11/limits \
- /home/gyl/workspace/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/hash.h \
+ /home/gyl/work/mprpc/thirdparty/protobuf/include/google/protobuf/stubs/hash.h \
  /usr/include/c++/11/cstring /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h

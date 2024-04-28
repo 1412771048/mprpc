@@ -1,4 +1,4 @@
-# Install script for directory: /home/gyl/workspace/mprpc/example
+# Install script for directory: /home/gyl/work/mprpc/example
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,8 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/gyl/workspace/mprpc/build/example/callee/cmake_install.cmake")
-  include("/home/gyl/workspace/mprpc/build/example/caller/cmake_install.cmake")
+  include("/home/gyl/work/mprpc/build/example/callee/cmake_install.cmake")
+  include("/home/gyl/work/mprpc/build/example/caller/cmake_install.cmake")
 
 endif()
 

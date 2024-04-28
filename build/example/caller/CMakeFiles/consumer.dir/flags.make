@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/gyl/workspace/mprpc/include -I/home/gyl/workspace/mprpc/proto -I/home/gyl/workspace/mprpc/thirdparty -I/home/gyl/workspace/mprpc/thirdparty/muduo/include -I/home/gyl/workspace/mprpc/thirdparty/protobuf/include -I/home/gyl/workspace/mprpc/thirdparty/simpleini -I/home/gyl/workspace/mprpc/thirdparty/zookeeper/include
+CXX_INCLUDES = -I/home/gyl/work/mprpc/include -I/home/gyl/work/mprpc/proto -I/home/gyl/work/mprpc/thirdparty -I/home/gyl/work/mprpc/thirdparty/muduo/include -I/home/gyl/work/mprpc/thirdparty/protobuf/include -I/home/gyl/work/mprpc/thirdparty/simpleini -I/home/gyl/work/mprpc/thirdparty/zookeeper/include
 
 CXX_FLAGS =  -g -fsanitize=address -fno-omit-frame-pointer -std=c++20
 

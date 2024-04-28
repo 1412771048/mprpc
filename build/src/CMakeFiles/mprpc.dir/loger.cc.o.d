@@ -1,6 +1,6 @@
-src/CMakeFiles/mprpc.dir/loger.cc.o: \
- /home/gyl/workspace/mprpc/src/loger.cc /usr/include/stdc-predef.h \
- /home/gyl/workspace/mprpc/include/loger.h /usr/include/c++/11/string \
+src/CMakeFiles/mprpc.dir/loger.cc.o: /home/gyl/work/mprpc/src/loger.cc \
+ /usr/include/stdc-predef.h /home/gyl/work/mprpc/include/loger.h \
+ /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -173,7 +173,7 @@ src/CMakeFiles/mprpc.dir/loger.cc.o: \
  /usr/include/c++/11/bits/quoted_string.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/iostream \
- /home/gyl/workspace/mprpc/include/lockqueue.h /usr/include/c++/11/queue \
+ /home/gyl/work/mprpc/include/lockqueue.h /usr/include/c++/11/queue \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
@@ -216,4 +216,4 @@ src/CMakeFiles/mprpc.dir/loger.cc.o: \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/ext/concurrence.h \
- /home/gyl/workspace/mprpc/include/typedef.h
+ /home/gyl/work/mprpc/include/typedef.h

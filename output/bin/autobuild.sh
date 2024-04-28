@@ -6,4 +6,3 @@ if [ ! -d "../../build" ]; then
 fi
 
 cd ../../build/ && rm -rf * && cmake .. && make -j4
-cd ../output/bin/ && ./provider -i test.ini

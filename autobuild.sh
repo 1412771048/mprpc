@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -u
 
 rm -rf `pwd`/build/*
 cd `pwd`/build &&

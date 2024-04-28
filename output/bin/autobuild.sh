@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -u
+set -x
 
 if [ ! -d "../../build" ]; then
     mkdir build

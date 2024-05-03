@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/gyl/work/mprpc/thirdparty/simpleini/ConvertUTF.cc" "src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o.d"
-  "/home/gyl/work/mprpc/src/loger.cc" "src/CMakeFiles/mprpc.dir/loger.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/loger.cc.o.d"
-  "/home/gyl/work/mprpc/src/rpcchannel.cc" "src/CMakeFiles/mprpc.dir/rpcchannel.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcchannel.cc.o.d"
-  "/home/gyl/work/mprpc/src/rpccontroller.cc" "src/CMakeFiles/mprpc.dir/rpccontroller.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpccontroller.cc.o.d"
-  "/home/gyl/work/mprpc/src/rpcheader.pb.cc" "src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d"
-  "/home/gyl/work/mprpc/src/rpcprovider.cc" "src/CMakeFiles/mprpc.dir/rpcprovider.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcprovider.cc.o.d"
-  "/home/gyl/work/mprpc/src/zkclient.cc" "src/CMakeFiles/mprpc.dir/zkclient.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/zkclient.cc.o.d"
+  "/home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc" "src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o.d"
+  "/home/gyl/workspace/mprpc/src/rpcchannel.cc" "src/CMakeFiles/mprpc.dir/rpcchannel.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcchannel.cc.o.d"
+  "/home/gyl/workspace/mprpc/src/rpcconfig.cc" "src/CMakeFiles/mprpc.dir/rpcconfig.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcconfig.cc.o.d"
+  "/home/gyl/workspace/mprpc/src/rpccontroller.cc" "src/CMakeFiles/mprpc.dir/rpccontroller.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpccontroller.cc.o.d"
+  "/home/gyl/workspace/mprpc/src/rpcheader.pb.cc" "src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d"
+  "/home/gyl/workspace/mprpc/src/rpcprovider.cc" "src/CMakeFiles/mprpc.dir/rpcprovider.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcprovider.cc.o.d"
+  "/home/gyl/workspace/mprpc/src/zkclient.cc" "src/CMakeFiles/mprpc.dir/zkclient.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/zkclient.cc.o.d"
   )
 
 # Targets to which this target links.

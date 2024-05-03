@@ -3,7 +3,14 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/thirdparty",
+                "${workspaceFolder}/thirdparty/muduo/include",
+                "${workspaceFolder}/thirdparty/protobuf-3.21.12/include",
+                "${workspaceFolder}/thirdparty/simpleini",
+                "${workspaceFolder}/thirdparty/zookeeper-3.4.9/include",
+                "${workspaceFolder}/example"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",

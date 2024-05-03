@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gyl/work/mprpc
+CMAKE_SOURCE_DIR = /home/gyl/workspace/mprpc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gyl/work/mprpc/build
+CMAKE_BINARY_DIR = /home/gyl/workspace/mprpc/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles /home/gyl/work/mprpc/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles /home/gyl/workspace/mprpc/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,30 @@ mprpc/fast:
 .PHONY : mprpc/fast
 
 #=============================================================================
-# Target rules for targets named provider
+# Target rules for targets named userservice
 
 # Build rule for target.
-provider: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 provider
-.PHONY : provider
+userservice: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 userservice
+.PHONY : userservice
 
 # fast build rule for target.
-provider/fast:
-	$(MAKE) $(MAKESILENT) -f example/callee/CMakeFiles/provider.dir/build.make example/callee/CMakeFiles/provider.dir/build
-.PHONY : provider/fast
+userservice/fast:
+	$(MAKE) $(MAKESILENT) -f example/callee/service1/CMakeFiles/userservice.dir/build.make example/callee/service1/CMakeFiles/userservice.dir/build
+.PHONY : userservice/fast
+
+#=============================================================================
+# Target rules for targets named chatservice
+
+# Build rule for target.
+chatservice: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chatservice
+.PHONY : chatservice
+
+# fast build rule for target.
+chatservice/fast:
+	$(MAKE) $(MAKESILENT) -f example/callee/service2/CMakeFiles/chatservice.dir/build.make example/callee/service2/CMakeFiles/chatservice.dir/build
+.PHONY : chatservice/fast
 
 #=============================================================================
 # Target rules for targets named consumer
@@ -163,9 +176,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... chatservice"
 	@echo "... consumer"
 	@echo "... mprpc"
-	@echo "... provider"
+	@echo "... userservice"
 .PHONY : help
 
 

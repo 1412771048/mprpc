@@ -55,7 +55,7 @@ make install
 打开conf，改名为zoo.cfg，dataDir=/home/gyl/workspace/mprpc/output/zk_data
 cd bin, ./zkServer.sh start
 ./zkCli.sh 客户端连接；
-所以zk的数据组织结构是树状
+zk的数据组织结构是树状
 ls / 列出当前目录节点; get /zookeeper获取节点数据; 
 set /zookeeper 10 设置节点数据; 
 create /test 创建节点; delete /test 删除节点; deleteall /test 删除节点及子节点;
@@ -69,3 +69,10 @@ zk有一个watch机制，类似发布订阅，事件触发，通知客户端
 如何移植到项目里：服务端在run的时候，注册到zk即可，注意要开启zkserver
 
 客户端数据发过去都能正常显示，但返回的response为什么没有填入数据呢，都是默认值.
+
+
+函数不要随便exit,可以给返回值，让调用方自己选择
+
+
+启动provider，若没挂就已经注册到zk里了
+

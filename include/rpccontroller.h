@@ -2,10 +2,12 @@
 #include <string>
 #include "google/protobuf/service.h"
 
+namespace mprpc {
 //RpcController是抽象类，我们重写它的常用四个方法
-class MprpcControlleer: public google::protobuf::RpcController {
+class MprpcController: public google::protobuf::RpcController {
 public:
-    MprpcControlleer();
+    MprpcController();
+    ~MprpcController() = default;
     void Reset();
     bool Failed() const;
     std::string ErrorText() const;
@@ -16,5 +18,6 @@ public:
     void NotifyOnCancel(google::protobuf::Closure* callback);
 private:    
     bool failed_; //rpc执行过程中的状态
-    std::string err_text_; //执行过程中的错误信息
+    std::string errText_; //执行过程中的错误信息
 };
+} //namespace mprpc

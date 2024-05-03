@@ -13,6 +13,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
   "../example/CMakeLists.txt"
   "../example/callee/CMakeLists.txt"
+  "../example/callee/service1/CMakeLists.txt"
+  "../example/callee/service2/CMakeLists.txt"
   "../example/caller/CMakeLists.txt"
   "../src/CMakeLists.txt"
   "/usr/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in"
@@ -121,12 +123,15 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "example/CMakeFiles/CMakeDirectoryInformation.cmake"
   "example/callee/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "example/callee/service1/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "example/callee/service2/CMakeFiles/CMakeDirectoryInformation.cmake"
   "example/caller/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/mprpc.dir/DependInfo.cmake"
-  "example/callee/CMakeFiles/provider.dir/DependInfo.cmake"
+  "example/callee/service1/CMakeFiles/userservice.dir/DependInfo.cmake"
+  "example/callee/service2/CMakeFiles/chatservice.dir/DependInfo.cmake"
   "example/caller/CMakeFiles/consumer.dir/DependInfo.cmake"
   )

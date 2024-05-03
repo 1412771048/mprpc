@@ -1,20 +1,24 @@
 #include "rpccontroller.h"
-MprpcControlleer::MprpcControlleer(): failed_(false), err_text_("") {}
-void MprpcControlleer::Reset() {
+
+namespace mprpc {
+    
+MprpcController::MprpcController(): failed_(false), errText_("") {}
+void MprpcController::Reset() {
     failed_ = false;
-    err_text_ = "";
+    errText_ = "";
 }
-bool MprpcControlleer::Failed() const {
+bool MprpcController::Failed() const {
     return failed_;
 }
-std::string MprpcControlleer::ErrorText() const {
-    return err_text_;
+std::string MprpcController::ErrorText() const {
+    return errText_;
 }
-void MprpcControlleer::SetFailed(const std::string& reason) {
+void MprpcController::SetFailed(const std::string& reason) {
     failed_ = true;
-    err_text_ = reason;
+    errText_ = reason;
 }
 
-void MprpcControlleer::StartCancel() {}
-bool MprpcControlleer::IsCanceled() const {return false;}
-void MprpcControlleer::NotifyOnCancel(google::protobuf::Closure* callback) {}
+void MprpcController::StartCancel() {}
+bool MprpcController::IsCanceled() const {return false;}
+void MprpcController::NotifyOnCancel(google::protobuf::Closure* callback) {}
+} //namesapce mprpc

@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gyl/work/mprpc
+CMAKE_SOURCE_DIR = /home/gyl/workspace/mprpc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gyl/work/mprpc/build
+CMAKE_BINARY_DIR = /home/gyl/workspace/mprpc/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -99,16 +99,49 @@ example/clean: example/caller/clean
 # Directory level rules for directory example/callee
 
 # Recursive "all" directory target.
-example/callee/all: example/callee/CMakeFiles/provider.dir/all
+example/callee/all: example/callee/service1/all
+example/callee/all: example/callee/service2/all
 .PHONY : example/callee/all
 
 # Recursive "preinstall" directory target.
-example/callee/preinstall:
+example/callee/preinstall: example/callee/service1/preinstall
+example/callee/preinstall: example/callee/service2/preinstall
 .PHONY : example/callee/preinstall
 
 # Recursive "clean" directory target.
-example/callee/clean: example/callee/CMakeFiles/provider.dir/clean
+example/callee/clean: example/callee/service1/clean
+example/callee/clean: example/callee/service2/clean
 .PHONY : example/callee/clean
+
+#=============================================================================
+# Directory level rules for directory example/callee/service1
+
+# Recursive "all" directory target.
+example/callee/service1/all: example/callee/service1/CMakeFiles/userservice.dir/all
+.PHONY : example/callee/service1/all
+
+# Recursive "preinstall" directory target.
+example/callee/service1/preinstall:
+.PHONY : example/callee/service1/preinstall
+
+# Recursive "clean" directory target.
+example/callee/service1/clean: example/callee/service1/CMakeFiles/userservice.dir/clean
+.PHONY : example/callee/service1/clean
+
+#=============================================================================
+# Directory level rules for directory example/callee/service2
+
+# Recursive "all" directory target.
+example/callee/service2/all: example/callee/service2/CMakeFiles/chatservice.dir/all
+.PHONY : example/callee/service2/all
+
+# Recursive "preinstall" directory target.
+example/callee/service2/preinstall:
+.PHONY : example/callee/service2/preinstall
+
+# Recursive "clean" directory target.
+example/callee/service2/clean: example/callee/service2/CMakeFiles/chatservice.dir/clean
+.PHONY : example/callee/service2/clean
 
 #=============================================================================
 # Directory level rules for directory example/caller
@@ -147,14 +180,14 @@ src/clean: src/CMakeFiles/mprpc.dir/clean
 src/CMakeFiles/mprpc.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/work/mprpc/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11 "Built target mprpc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=7,8,9,10,11,12,13,14 "Built target mprpc"
 .PHONY : src/CMakeFiles/mprpc.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/mprpc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/mprpc.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/mprpc.dir/rule
 
 # Convenience name for target.
@@ -167,30 +200,56 @@ src/CMakeFiles/mprpc.dir/clean:
 .PHONY : src/CMakeFiles/mprpc.dir/clean
 
 #=============================================================================
-# Target rules for target example/callee/CMakeFiles/provider.dir
+# Target rules for target example/callee/service1/CMakeFiles/userservice.dir
 
 # All Build rule for target.
-example/callee/CMakeFiles/provider.dir/all: src/CMakeFiles/mprpc.dir/all
-	$(MAKE) $(MAKESILENT) -f example/callee/CMakeFiles/provider.dir/build.make example/callee/CMakeFiles/provider.dir/depend
-	$(MAKE) $(MAKESILENT) -f example/callee/CMakeFiles/provider.dir/build.make example/callee/CMakeFiles/provider.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/work/mprpc/build/CMakeFiles --progress-num=12,13,14 "Built target provider"
-.PHONY : example/callee/CMakeFiles/provider.dir/all
+example/callee/service1/CMakeFiles/userservice.dir/all: src/CMakeFiles/mprpc.dir/all
+	$(MAKE) $(MAKESILENT) -f example/callee/service1/CMakeFiles/userservice.dir/build.make example/callee/service1/CMakeFiles/userservice.dir/depend
+	$(MAKE) $(MAKESILENT) -f example/callee/service1/CMakeFiles/userservice.dir/build.make example/callee/service1/CMakeFiles/userservice.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=15,16,17 "Built target userservice"
+.PHONY : example/callee/service1/CMakeFiles/userservice.dir/all
 
 # Build rule for subdir invocation for target.
-example/callee/CMakeFiles/provider.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 11
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/callee/CMakeFiles/provider.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 0
-.PHONY : example/callee/CMakeFiles/provider.dir/rule
+example/callee/service1/CMakeFiles/userservice.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/callee/service1/CMakeFiles/userservice.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
+.PHONY : example/callee/service1/CMakeFiles/userservice.dir/rule
 
 # Convenience name for target.
-provider: example/callee/CMakeFiles/provider.dir/rule
-.PHONY : provider
+userservice: example/callee/service1/CMakeFiles/userservice.dir/rule
+.PHONY : userservice
 
 # clean rule for target.
-example/callee/CMakeFiles/provider.dir/clean:
-	$(MAKE) $(MAKESILENT) -f example/callee/CMakeFiles/provider.dir/build.make example/callee/CMakeFiles/provider.dir/clean
-.PHONY : example/callee/CMakeFiles/provider.dir/clean
+example/callee/service1/CMakeFiles/userservice.dir/clean:
+	$(MAKE) $(MAKESILENT) -f example/callee/service1/CMakeFiles/userservice.dir/build.make example/callee/service1/CMakeFiles/userservice.dir/clean
+.PHONY : example/callee/service1/CMakeFiles/userservice.dir/clean
+
+#=============================================================================
+# Target rules for target example/callee/service2/CMakeFiles/chatservice.dir
+
+# All Build rule for target.
+example/callee/service2/CMakeFiles/chatservice.dir/all: src/CMakeFiles/mprpc.dir/all
+	$(MAKE) $(MAKESILENT) -f example/callee/service2/CMakeFiles/chatservice.dir/build.make example/callee/service2/CMakeFiles/chatservice.dir/depend
+	$(MAKE) $(MAKESILENT) -f example/callee/service2/CMakeFiles/chatservice.dir/build.make example/callee/service2/CMakeFiles/chatservice.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=1,2,3 "Built target chatservice"
+.PHONY : example/callee/service2/CMakeFiles/chatservice.dir/all
+
+# Build rule for subdir invocation for target.
+example/callee/service2/CMakeFiles/chatservice.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/callee/service2/CMakeFiles/chatservice.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
+.PHONY : example/callee/service2/CMakeFiles/chatservice.dir/rule
+
+# Convenience name for target.
+chatservice: example/callee/service2/CMakeFiles/chatservice.dir/rule
+.PHONY : chatservice
+
+# clean rule for target.
+example/callee/service2/CMakeFiles/chatservice.dir/clean:
+	$(MAKE) $(MAKESILENT) -f example/callee/service2/CMakeFiles/chatservice.dir/build.make example/callee/service2/CMakeFiles/chatservice.dir/clean
+.PHONY : example/callee/service2/CMakeFiles/chatservice.dir/clean
 
 #=============================================================================
 # Target rules for target example/caller/CMakeFiles/consumer.dir
@@ -199,14 +258,14 @@ example/callee/CMakeFiles/provider.dir/clean:
 example/caller/CMakeFiles/consumer.dir/all: src/CMakeFiles/mprpc.dir/all
 	$(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/consumer.dir/build.make example/caller/CMakeFiles/consumer.dir/depend
 	$(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/consumer.dir/build.make example/caller/CMakeFiles/consumer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/work/mprpc/build/CMakeFiles --progress-num=1,2,3 "Built target consumer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=4,5,6 "Built target consumer"
 .PHONY : example/caller/CMakeFiles/consumer.dir/all
 
 # Build rule for subdir invocation for target.
 example/caller/CMakeFiles/consumer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/CMakeFiles/consumer.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
 .PHONY : example/caller/CMakeFiles/consumer.dir/rule
 
 # Convenience name for target.

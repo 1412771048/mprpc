@@ -73,99 +73,99 @@ src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o: src/CMakeFiles
 src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o: ../thirdparty/simpleini/ConvertUTF.cc
 src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o -MF CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o.d -o CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o -c /home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o -MF CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o.d -o CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o -c /home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc
 
 src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc > CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc > CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.i
 
 src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc -o CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/thirdparty/simpleini/ConvertUTF.cc -o CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.s
 
 src/CMakeFiles/mprpc.dir/rpcchannel.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpcchannel.cc.o: ../src/rpcchannel.cc
 src/CMakeFiles/mprpc.dir/rpcchannel.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mprpc.dir/rpcchannel.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcchannel.cc.o -MF CMakeFiles/mprpc.dir/rpcchannel.cc.o.d -o CMakeFiles/mprpc.dir/rpcchannel.cc.o -c /home/gyl/workspace/mprpc/src/rpcchannel.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcchannel.cc.o -MF CMakeFiles/mprpc.dir/rpcchannel.cc.o.d -o CMakeFiles/mprpc.dir/rpcchannel.cc.o -c /home/gyl/workspace/mprpc/src/rpcchannel.cc
 
 src/CMakeFiles/mprpc.dir/rpcchannel.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/rpcchannel.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcchannel.cc > CMakeFiles/mprpc.dir/rpcchannel.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcchannel.cc > CMakeFiles/mprpc.dir/rpcchannel.cc.i
 
 src/CMakeFiles/mprpc.dir/rpcchannel.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/rpcchannel.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcchannel.cc -o CMakeFiles/mprpc.dir/rpcchannel.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcchannel.cc -o CMakeFiles/mprpc.dir/rpcchannel.cc.s
 
 src/CMakeFiles/mprpc.dir/rpcconfig.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpcconfig.cc.o: ../src/rpcconfig.cc
 src/CMakeFiles/mprpc.dir/rpcconfig.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mprpc.dir/rpcconfig.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcconfig.cc.o -MF CMakeFiles/mprpc.dir/rpcconfig.cc.o.d -o CMakeFiles/mprpc.dir/rpcconfig.cc.o -c /home/gyl/workspace/mprpc/src/rpcconfig.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcconfig.cc.o -MF CMakeFiles/mprpc.dir/rpcconfig.cc.o.d -o CMakeFiles/mprpc.dir/rpcconfig.cc.o -c /home/gyl/workspace/mprpc/src/rpcconfig.cc
 
 src/CMakeFiles/mprpc.dir/rpcconfig.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/rpcconfig.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcconfig.cc > CMakeFiles/mprpc.dir/rpcconfig.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcconfig.cc > CMakeFiles/mprpc.dir/rpcconfig.cc.i
 
 src/CMakeFiles/mprpc.dir/rpcconfig.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/rpcconfig.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcconfig.cc -o CMakeFiles/mprpc.dir/rpcconfig.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcconfig.cc -o CMakeFiles/mprpc.dir/rpcconfig.cc.s
 
 src/CMakeFiles/mprpc.dir/rpccontroller.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpccontroller.cc.o: ../src/rpccontroller.cc
 src/CMakeFiles/mprpc.dir/rpccontroller.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mprpc.dir/rpccontroller.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpccontroller.cc.o -MF CMakeFiles/mprpc.dir/rpccontroller.cc.o.d -o CMakeFiles/mprpc.dir/rpccontroller.cc.o -c /home/gyl/workspace/mprpc/src/rpccontroller.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpccontroller.cc.o -MF CMakeFiles/mprpc.dir/rpccontroller.cc.o.d -o CMakeFiles/mprpc.dir/rpccontroller.cc.o -c /home/gyl/workspace/mprpc/src/rpccontroller.cc
 
 src/CMakeFiles/mprpc.dir/rpccontroller.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/rpccontroller.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpccontroller.cc > CMakeFiles/mprpc.dir/rpccontroller.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpccontroller.cc > CMakeFiles/mprpc.dir/rpccontroller.cc.i
 
 src/CMakeFiles/mprpc.dir/rpccontroller.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/rpccontroller.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpccontroller.cc -o CMakeFiles/mprpc.dir/rpccontroller.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpccontroller.cc -o CMakeFiles/mprpc.dir/rpccontroller.cc.s
 
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o: ../src/rpcheader.pb.cc
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -MF CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d -o CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -c /home/gyl/workspace/mprpc/src/rpcheader.pb.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -MF CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d -o CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -c /home/gyl/workspace/mprpc/src/rpcheader.pb.cc
 
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/rpcheader.pb.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcheader.pb.cc > CMakeFiles/mprpc.dir/rpcheader.pb.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcheader.pb.cc > CMakeFiles/mprpc.dir/rpcheader.pb.cc.i
 
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/rpcheader.pb.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcheader.pb.cc -o CMakeFiles/mprpc.dir/rpcheader.pb.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcheader.pb.cc -o CMakeFiles/mprpc.dir/rpcheader.pb.cc.s
 
 src/CMakeFiles/mprpc.dir/rpcprovider.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpcprovider.cc.o: ../src/rpcprovider.cc
 src/CMakeFiles/mprpc.dir/rpcprovider.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/mprpc.dir/rpcprovider.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcprovider.cc.o -MF CMakeFiles/mprpc.dir/rpcprovider.cc.o.d -o CMakeFiles/mprpc.dir/rpcprovider.cc.o -c /home/gyl/workspace/mprpc/src/rpcprovider.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcprovider.cc.o -MF CMakeFiles/mprpc.dir/rpcprovider.cc.o.d -o CMakeFiles/mprpc.dir/rpcprovider.cc.o -c /home/gyl/workspace/mprpc/src/rpcprovider.cc
 
 src/CMakeFiles/mprpc.dir/rpcprovider.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/rpcprovider.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcprovider.cc > CMakeFiles/mprpc.dir/rpcprovider.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/rpcprovider.cc > CMakeFiles/mprpc.dir/rpcprovider.cc.i
 
 src/CMakeFiles/mprpc.dir/rpcprovider.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/rpcprovider.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcprovider.cc -o CMakeFiles/mprpc.dir/rpcprovider.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/rpcprovider.cc -o CMakeFiles/mprpc.dir/rpcprovider.cc.s
 
 src/CMakeFiles/mprpc.dir/zkclient.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/zkclient.cc.o: ../src/zkclient.cc
 src/CMakeFiles/mprpc.dir/zkclient.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/mprpc.dir/zkclient.cc.o"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/zkclient.cc.o -MF CMakeFiles/mprpc.dir/zkclient.cc.o.d -o CMakeFiles/mprpc.dir/zkclient.cc.o -c /home/gyl/workspace/mprpc/src/zkclient.cc
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/zkclient.cc.o -MF CMakeFiles/mprpc.dir/zkclient.cc.o.d -o CMakeFiles/mprpc.dir/zkclient.cc.o -c /home/gyl/workspace/mprpc/src/zkclient.cc
 
 src/CMakeFiles/mprpc.dir/zkclient.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/zkclient.cc.i"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/zkclient.cc > CMakeFiles/mprpc.dir/zkclient.cc.i
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/src/zkclient.cc > CMakeFiles/mprpc.dir/zkclient.cc.i
 
 src/CMakeFiles/mprpc.dir/zkclient.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/zkclient.cc.s"
-	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/zkclient.cc -o CMakeFiles/mprpc.dir/zkclient.cc.s
+	cd /home/gyl/workspace/mprpc/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/src/zkclient.cc -o CMakeFiles/mprpc.dir/zkclient.cc.s
 
 # Object files for target mprpc
 mprpc_OBJECTS = \

@@ -11,11 +11,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
-  "../example/CMakeLists.txt"
-  "../example/callee/CMakeLists.txt"
-  "../example/callee/service1/CMakeLists.txt"
-  "../example/callee/service2/CMakeLists.txt"
-  "../example/caller/CMakeLists.txt"
+  "../example/client/CMakeLists.txt"
+  "../example/register/CMakeLists.txt"
   "../src/CMakeLists.txt"
   "/usr/share/cmake-3.22/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake"
@@ -46,17 +43,13 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "example/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "example/callee/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "example/callee/service1/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "example/callee/service2/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "example/caller/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "example/register/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "example/client/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/mprpc.dir/DependInfo.cmake"
-  "example/callee/service1/CMakeFiles/userservice.dir/DependInfo.cmake"
-  "example/callee/service2/CMakeFiles/chatservice.dir/DependInfo.cmake"
-  "example/caller/CMakeFiles/consumer.dir/DependInfo.cmake"
+  "example/register/CMakeFiles/register.dir/DependInfo.cmake"
+  "example/client/CMakeFiles/consumer.dir/DependInfo.cmake"
   )

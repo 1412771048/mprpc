@@ -73,29 +73,29 @@ example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.o: example/c
 example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.o: ../example/user.pb.cc
 example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.o: example/callee/service2/CMakeFiles/chatservice.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.o"
-	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.o -MF CMakeFiles/chatservice.dir/__/__/user.pb.cc.o.d -o CMakeFiles/chatservice.dir/__/__/user.pb.cc.o -c /home/gyl/workspace/mprpc/example/user.pb.cc
+	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.o -MF CMakeFiles/chatservice.dir/__/__/user.pb.cc.o.d -o CMakeFiles/chatservice.dir/__/__/user.pb.cc.o -c /home/gyl/workspace/mprpc/example/user.pb.cc
 
 example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chatservice.dir/__/__/user.pb.cc.i"
-	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/user.pb.cc > CMakeFiles/chatservice.dir/__/__/user.pb.cc.i
+	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/user.pb.cc > CMakeFiles/chatservice.dir/__/__/user.pb.cc.i
 
 example/callee/service2/CMakeFiles/chatservice.dir/__/__/user.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chatservice.dir/__/__/user.pb.cc.s"
-	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/user.pb.cc -o CMakeFiles/chatservice.dir/__/__/user.pb.cc.s
+	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/user.pb.cc -o CMakeFiles/chatservice.dir/__/__/user.pb.cc.s
 
 example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.o: example/callee/service2/CMakeFiles/chatservice.dir/flags.make
 example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.o: ../example/callee/service2/chatservice.cc
 example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.o: example/callee/service2/CMakeFiles/chatservice.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.o"
-	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.o -MF CMakeFiles/chatservice.dir/chatservice.cc.o.d -o CMakeFiles/chatservice.dir/chatservice.cc.o -c /home/gyl/workspace/mprpc/example/callee/service2/chatservice.cc
+	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.o -MF CMakeFiles/chatservice.dir/chatservice.cc.o.d -o CMakeFiles/chatservice.dir/chatservice.cc.o -c /home/gyl/workspace/mprpc/example/callee/service2/chatservice.cc
 
 example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chatservice.dir/chatservice.cc.i"
-	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/callee/service2/chatservice.cc > CMakeFiles/chatservice.dir/chatservice.cc.i
+	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/callee/service2/chatservice.cc > CMakeFiles/chatservice.dir/chatservice.cc.i
 
 example/callee/service2/CMakeFiles/chatservice.dir/chatservice.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chatservice.dir/chatservice.cc.s"
-	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/callee/service2/chatservice.cc -o CMakeFiles/chatservice.dir/chatservice.cc.s
+	cd /home/gyl/workspace/mprpc/build/example/callee/service2 && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/callee/service2/chatservice.cc -o CMakeFiles/chatservice.dir/chatservice.cc.s
 
 # Object files for target chatservice
 chatservice_OBJECTS = \

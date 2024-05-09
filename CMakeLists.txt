@@ -32,4 +32,7 @@ link_directories(
 ) 
 
 add_subdirectory(src)
-add_subdirectory(example)
+add_subdirectory(example/register)
+
+
+add_subdirectory(example/client)

@@ -2,14 +2,11 @@ syntax = "proto3";
 package fixbug;
 option cc_generic_services = true;
 
-//第一个集群提供的rpc服务:一个服务，2个方法
-/*------------------------------------------------------------------------------*/
-//把Login函数的参数和返回值分别封装成一个message，填入下面的service
 message LoginRequest { //登录请求
     string name = 1;
     string pwd = 2;
 }
-message LoginResponse { //登录响应
+message LoginResponse { 
     bool success = 1;
     string errmsg = 2;
 }

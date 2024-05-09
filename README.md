@@ -76,4 +76,16 @@ zk有一个watch机制，类似发布订阅，事件触发，通知客户端
 
 启动provider，若没挂就已经注册到zk里了
 
+create table user(
+    name varchar(20) not null,
+    password varchar(20) not null,
+    state enum('offline', 'online') default 'offline' not null
+);
 
+create table offlinemsg(
+    name varchar(20) not null,
+    msg varchar(200)
+);
+
+
+response为空，客户端就收不到send,所以proto信息要带多一点

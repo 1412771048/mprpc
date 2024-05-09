@@ -68,7 +68,7 @@ Loger::Loger() {
             s1 << std::put_time(localTime, "%Y-%m-%d"); // 年-月-日 时 格式
             s2 << std::put_time(localTime, "%H:%M:%S "); //时:分:秒 
             //写入文件
-            std::string file_name = s1.str() + ".txt";
+            std::string file_name = std::string("/home/gyl/workspace/mprpc/") + s1.str() + ".txt";
             FILE* fp = fopen(file_name.c_str(), "a+");//追加写入文件，不存在就创建
             if (!fp) {
                 std::cerr << "open file error" << std::endl;//打开失败，进入下一次循环继续打开

@@ -130,30 +130,17 @@ mprpc/fast:
 .PHONY : mprpc/fast
 
 #=============================================================================
-# Target rules for targets named userservice
+# Target rules for targets named register
 
 # Build rule for target.
-userservice: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 userservice
-.PHONY : userservice
+register: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 register
+.PHONY : register
 
 # fast build rule for target.
-userservice/fast:
-	$(MAKE) $(MAKESILENT) -f example/callee/service1/CMakeFiles/userservice.dir/build.make example/callee/service1/CMakeFiles/userservice.dir/build
-.PHONY : userservice/fast
-
-#=============================================================================
-# Target rules for targets named chatservice
-
-# Build rule for target.
-chatservice: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chatservice
-.PHONY : chatservice
-
-# fast build rule for target.
-chatservice/fast:
-	$(MAKE) $(MAKESILENT) -f example/callee/service2/CMakeFiles/chatservice.dir/build.make example/callee/service2/CMakeFiles/chatservice.dir/build
-.PHONY : chatservice/fast
+register/fast:
+	$(MAKE) $(MAKESILENT) -f example/register/CMakeFiles/register.dir/build.make example/register/CMakeFiles/register.dir/build
+.PHONY : register/fast
 
 #=============================================================================
 # Target rules for targets named consumer
@@ -165,7 +152,7 @@ consumer: cmake_check_build_system
 
 # fast build rule for target.
 consumer/fast:
-	$(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/consumer.dir/build.make example/caller/CMakeFiles/consumer.dir/build
+	$(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/build
 .PHONY : consumer/fast
 
 # Help Target
@@ -176,10 +163,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... chatservice"
 	@echo "... consumer"
 	@echo "... mprpc"
-	@echo "... userservice"
+	@echo "... register"
 .PHONY : help
 
 

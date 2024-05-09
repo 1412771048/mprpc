@@ -73,29 +73,29 @@ example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.o: example/caller/CMakeFile
 example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.o: ../example/user.pb.cc
 example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.o: example/caller/CMakeFiles/consumer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.o"
-	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.o -MF CMakeFiles/consumer.dir/__/user.pb.cc.o.d -o CMakeFiles/consumer.dir/__/user.pb.cc.o -c /home/gyl/workspace/mprpc/example/user.pb.cc
+	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.o -MF CMakeFiles/consumer.dir/__/user.pb.cc.o.d -o CMakeFiles/consumer.dir/__/user.pb.cc.o -c /home/gyl/workspace/mprpc/example/user.pb.cc
 
 example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/consumer.dir/__/user.pb.cc.i"
-	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/user.pb.cc > CMakeFiles/consumer.dir/__/user.pb.cc.i
+	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/user.pb.cc > CMakeFiles/consumer.dir/__/user.pb.cc.i
 
 example/caller/CMakeFiles/consumer.dir/__/user.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/consumer.dir/__/user.pb.cc.s"
-	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/user.pb.cc -o CMakeFiles/consumer.dir/__/user.pb.cc.s
+	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/user.pb.cc -o CMakeFiles/consumer.dir/__/user.pb.cc.s
 
 example/caller/CMakeFiles/consumer.dir/calluserservice.cc.o: example/caller/CMakeFiles/consumer.dir/flags.make
 example/caller/CMakeFiles/consumer.dir/calluserservice.cc.o: ../example/caller/calluserservice.cc
 example/caller/CMakeFiles/consumer.dir/calluserservice.cc.o: example/caller/CMakeFiles/consumer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gyl/workspace/mprpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object example/caller/CMakeFiles/consumer.dir/calluserservice.cc.o"
-	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/caller/CMakeFiles/consumer.dir/calluserservice.cc.o -MF CMakeFiles/consumer.dir/calluserservice.cc.o.d -o CMakeFiles/consumer.dir/calluserservice.cc.o -c /home/gyl/workspace/mprpc/example/caller/calluserservice.cc
+	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/ccache /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/caller/CMakeFiles/consumer.dir/calluserservice.cc.o -MF CMakeFiles/consumer.dir/calluserservice.cc.o.d -o CMakeFiles/consumer.dir/calluserservice.cc.o -c /home/gyl/workspace/mprpc/example/caller/calluserservice.cc
 
 example/caller/CMakeFiles/consumer.dir/calluserservice.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/consumer.dir/calluserservice.cc.i"
-	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/caller/calluserservice.cc > CMakeFiles/consumer.dir/calluserservice.cc.i
+	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gyl/workspace/mprpc/example/caller/calluserservice.cc > CMakeFiles/consumer.dir/calluserservice.cc.i
 
 example/caller/CMakeFiles/consumer.dir/calluserservice.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/consumer.dir/calluserservice.cc.s"
-	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/caller/calluserservice.cc -o CMakeFiles/consumer.dir/calluserservice.cc.s
+	cd /home/gyl/workspace/mprpc/build/example/caller && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gyl/workspace/mprpc/example/caller/calluserservice.cc -o CMakeFiles/consumer.dir/calluserservice.cc.s
 
 # Object files for target consumer
 consumer_OBJECTS = \

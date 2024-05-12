@@ -23,6 +23,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/thirdparty/simpleini
     ${PROJECT_SOURCE_DIR}/thirdparty/zookeeper-3.4.9/include
     ${PROJECT_SOURCE_DIR}/example
+    ${PROJECT_SOURCE_DIR}/thirdparty/mysqlclient
 ) 
 link_directories(
     ${PROJECT_SOURCE_DIR}/lib #mprpc.so
@@ -32,7 +33,6 @@ link_directories(
 ) 
 
 add_subdirectory(src)
-add_subdirectory(example/register)
-
+add_subdirectory(example/rpcservice)
 
 add_subdirectory(example/client)

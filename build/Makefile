@@ -130,17 +130,17 @@ mprpc/fast:
 .PHONY : mprpc/fast
 
 #=============================================================================
-# Target rules for targets named register
+# Target rules for targets named rpcservice
 
 # Build rule for target.
-register: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 register
-.PHONY : register
+rpcservice: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rpcservice
+.PHONY : rpcservice
 
 # fast build rule for target.
-register/fast:
-	$(MAKE) $(MAKESILENT) -f example/register/CMakeFiles/register.dir/build.make example/register/CMakeFiles/register.dir/build
-.PHONY : register/fast
+rpcservice/fast:
+	$(MAKE) $(MAKESILENT) -f example/rpcservice/CMakeFiles/rpcservice.dir/build.make example/rpcservice/CMakeFiles/rpcservice.dir/build
+.PHONY : rpcservice/fast
 
 #=============================================================================
 # Target rules for targets named consumer
@@ -165,7 +165,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... consumer"
 	@echo "... mprpc"
-	@echo "... register"
+	@echo "... rpcservice"
 .PHONY : help
 
 

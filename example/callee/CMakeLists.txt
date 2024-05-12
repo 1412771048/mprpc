@@ -1,2 +1,0 @@
-add_subdirectory(service1)
-add_subdirectory(service2)

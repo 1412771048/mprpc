@@ -3,9 +3,9 @@
 /home/gyl/workspace/mprpc/build/src/CMakeFiles/mprpc.dir
 /home/gyl/workspace/mprpc/build/src/CMakeFiles/edit_cache.dir
 /home/gyl/workspace/mprpc/build/src/CMakeFiles/rebuild_cache.dir
-/home/gyl/workspace/mprpc/build/example/register/CMakeFiles/register.dir
-/home/gyl/workspace/mprpc/build/example/register/CMakeFiles/edit_cache.dir
-/home/gyl/workspace/mprpc/build/example/register/CMakeFiles/rebuild_cache.dir
+/home/gyl/workspace/mprpc/build/example/rpcservice/CMakeFiles/rpcservice.dir
+/home/gyl/workspace/mprpc/build/example/rpcservice/CMakeFiles/edit_cache.dir
+/home/gyl/workspace/mprpc/build/example/rpcservice/CMakeFiles/rebuild_cache.dir
 /home/gyl/workspace/mprpc/build/example/client/CMakeFiles/consumer.dir
 /home/gyl/workspace/mprpc/build/example/client/CMakeFiles/edit_cache.dir
 /home/gyl/workspace/mprpc/build/example/client/CMakeFiles/rebuild_cache.dir

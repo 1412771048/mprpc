@@ -89,3 +89,9 @@ create table offlinemsg(
 
 
 response为空，客户端就收不到send,所以proto信息要带多一点
+
+
+分布式集群框架知识给外部提供服务的，不涉及任何业务,具体的业务各模块自己做
+所有其他的模块都能调用它
+
+直接把sql发过去，但要注意socket连接注意安全啊，加一层ssl

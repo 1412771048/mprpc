@@ -112,7 +112,7 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
     //反序列化args,存入request(只有服务和方法存在我们才反序列化这个，不然没意义)
     auto request = service->GetRequestPrototype(method).New();
     if (!request->ParseFromString(recv_str.substr(4 + header_size, args_size))) {
-        LOG_ERROR("request 反序列化失败！");
+        LOG_ERROR("request 反序列化失败！");    
         return;
     }
     auto response = service->GetResponsePrototype(method).New(); //这个不是堆区的吗
@@ -132,13 +132,13 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net
 
 //此函数专门用于给done使用
 void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr& conn, google::protobuf::Message* response) {
-    //把序列化后的响应发送出去,且不管成不成功都关闭连接，不然客户端一直阻塞着
+    //把序列化后的响应发送出去
     std::string response_str;
     if (!response->SerializeToString(&response_str)) {
         LOG_ERROR("serialize response_str error!");
     } else {
         conn->send(response_str);
     }
-    conn->shutdown(); 
+    conn->shutdown();  //服务端主动关闭，模拟短连接
 }
 }// namespace mprpc 

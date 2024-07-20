@@ -50,7 +50,7 @@ ConnectPool& ConnectPool::GetInstance() {
 
 bool ConnectPool::LoadConfig() {
     CSimpleIniA ini;
-    if (ini.LoadFile("/home/gyl/workspace/mprpc/thirdparty/mysqlclient/mysql.conf") < 0) {
+    if (ini.LoadFile("/home/gyl/work/mprpc/thirdparty/mysqlclient/mysql.conf") < 0) {
         return false;
     }
     ip_ = ini.GetValue("mysql", "ip");

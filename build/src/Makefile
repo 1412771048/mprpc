@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gyl/workspace/mprpc
+CMAKE_SOURCE_DIR = /home/gyl/work/mprpc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gyl/workspace/mprpc/build
+CMAKE_BINARY_DIR = /home/gyl/work/mprpc/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/gyl/workspace/mprpc/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles /home/gyl/workspace/mprpc/build/src//CMakeFiles/progress.marks
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
+	cd /home/gyl/work/mprpc/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles /home/gyl/work/mprpc/build/src//CMakeFiles/progress.marks
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/gyl/workspace/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/gyl/work/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/mprpc.dir/rule:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/mprpc.dir/rule
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/mprpc.dir/rule
 .PHONY : src/CMakeFiles/mprpc.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ mprpc: src/CMakeFiles/mprpc.dir/rule
 
 # fast build rule for target.
 mprpc/fast:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/build
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/build
 .PHONY : mprpc/fast
 
 __/thirdparty/simpleini/ConvertUTF.o: __/thirdparty/simpleini/ConvertUTF.cc.o
@@ -135,7 +135,7 @@ __/thirdparty/simpleini/ConvertUTF.o: __/thirdparty/simpleini/ConvertUTF.cc.o
 
 # target to build an object file
 __/thirdparty/simpleini/ConvertUTF.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o
 .PHONY : __/thirdparty/simpleini/ConvertUTF.cc.o
 
 __/thirdparty/simpleini/ConvertUTF.i: __/thirdparty/simpleini/ConvertUTF.cc.i
@@ -143,7 +143,7 @@ __/thirdparty/simpleini/ConvertUTF.i: __/thirdparty/simpleini/ConvertUTF.cc.i
 
 # target to preprocess a source file
 __/thirdparty/simpleini/ConvertUTF.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.i
 .PHONY : __/thirdparty/simpleini/ConvertUTF.cc.i
 
 __/thirdparty/simpleini/ConvertUTF.s: __/thirdparty/simpleini/ConvertUTF.cc.s
@@ -151,7 +151,7 @@ __/thirdparty/simpleini/ConvertUTF.s: __/thirdparty/simpleini/ConvertUTF.cc.s
 
 # target to generate assembly for a file
 __/thirdparty/simpleini/ConvertUTF.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.s
 .PHONY : __/thirdparty/simpleini/ConvertUTF.cc.s
 
 rpcchannel.o: rpcchannel.cc.o
@@ -159,7 +159,7 @@ rpcchannel.o: rpcchannel.cc.o
 
 # target to build an object file
 rpcchannel.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcchannel.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcchannel.cc.o
 .PHONY : rpcchannel.cc.o
 
 rpcchannel.i: rpcchannel.cc.i
@@ -167,7 +167,7 @@ rpcchannel.i: rpcchannel.cc.i
 
 # target to preprocess a source file
 rpcchannel.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcchannel.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcchannel.cc.i
 .PHONY : rpcchannel.cc.i
 
 rpcchannel.s: rpcchannel.cc.s
@@ -175,7 +175,7 @@ rpcchannel.s: rpcchannel.cc.s
 
 # target to generate assembly for a file
 rpcchannel.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcchannel.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcchannel.cc.s
 .PHONY : rpcchannel.cc.s
 
 rpcconfig.o: rpcconfig.cc.o
@@ -183,7 +183,7 @@ rpcconfig.o: rpcconfig.cc.o
 
 # target to build an object file
 rpcconfig.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcconfig.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcconfig.cc.o
 .PHONY : rpcconfig.cc.o
 
 rpcconfig.i: rpcconfig.cc.i
@@ -191,7 +191,7 @@ rpcconfig.i: rpcconfig.cc.i
 
 # target to preprocess a source file
 rpcconfig.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcconfig.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcconfig.cc.i
 .PHONY : rpcconfig.cc.i
 
 rpcconfig.s: rpcconfig.cc.s
@@ -199,7 +199,7 @@ rpcconfig.s: rpcconfig.cc.s
 
 # target to generate assembly for a file
 rpcconfig.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcconfig.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcconfig.cc.s
 .PHONY : rpcconfig.cc.s
 
 rpccontroller.o: rpccontroller.cc.o
@@ -207,7 +207,7 @@ rpccontroller.o: rpccontroller.cc.o
 
 # target to build an object file
 rpccontroller.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpccontroller.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpccontroller.cc.o
 .PHONY : rpccontroller.cc.o
 
 rpccontroller.i: rpccontroller.cc.i
@@ -215,7 +215,7 @@ rpccontroller.i: rpccontroller.cc.i
 
 # target to preprocess a source file
 rpccontroller.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpccontroller.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpccontroller.cc.i
 .PHONY : rpccontroller.cc.i
 
 rpccontroller.s: rpccontroller.cc.s
@@ -223,7 +223,7 @@ rpccontroller.s: rpccontroller.cc.s
 
 # target to generate assembly for a file
 rpccontroller.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpccontroller.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpccontroller.cc.s
 .PHONY : rpccontroller.cc.s
 
 rpcheader.pb.o: rpcheader.pb.cc.o
@@ -231,7 +231,7 @@ rpcheader.pb.o: rpcheader.pb.cc.o
 
 # target to build an object file
 rpcheader.pb.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o
 .PHONY : rpcheader.pb.cc.o
 
 rpcheader.pb.i: rpcheader.pb.cc.i
@@ -239,7 +239,7 @@ rpcheader.pb.i: rpcheader.pb.cc.i
 
 # target to preprocess a source file
 rpcheader.pb.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.i
 .PHONY : rpcheader.pb.cc.i
 
 rpcheader.pb.s: rpcheader.pb.cc.s
@@ -247,7 +247,7 @@ rpcheader.pb.s: rpcheader.pb.cc.s
 
 # target to generate assembly for a file
 rpcheader.pb.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.s
 .PHONY : rpcheader.pb.cc.s
 
 rpcprovider.o: rpcprovider.cc.o
@@ -255,7 +255,7 @@ rpcprovider.o: rpcprovider.cc.o
 
 # target to build an object file
 rpcprovider.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcprovider.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcprovider.cc.o
 .PHONY : rpcprovider.cc.o
 
 rpcprovider.i: rpcprovider.cc.i
@@ -263,7 +263,7 @@ rpcprovider.i: rpcprovider.cc.i
 
 # target to preprocess a source file
 rpcprovider.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcprovider.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcprovider.cc.i
 .PHONY : rpcprovider.cc.i
 
 rpcprovider.s: rpcprovider.cc.s
@@ -271,7 +271,7 @@ rpcprovider.s: rpcprovider.cc.s
 
 # target to generate assembly for a file
 rpcprovider.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcprovider.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/rpcprovider.cc.s
 .PHONY : rpcprovider.cc.s
 
 zkclient.o: zkclient.cc.o
@@ -279,7 +279,7 @@ zkclient.o: zkclient.cc.o
 
 # target to build an object file
 zkclient.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/zkclient.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/zkclient.cc.o
 .PHONY : zkclient.cc.o
 
 zkclient.i: zkclient.cc.i
@@ -287,7 +287,7 @@ zkclient.i: zkclient.cc.i
 
 # target to preprocess a source file
 zkclient.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/zkclient.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/zkclient.cc.i
 .PHONY : zkclient.cc.i
 
 zkclient.s: zkclient.cc.s
@@ -295,7 +295,7 @@ zkclient.s: zkclient.cc.s
 
 # target to generate assembly for a file
 zkclient.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/zkclient.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mprpc.dir/build.make src/CMakeFiles/mprpc.dir/zkclient.cc.s
 .PHONY : zkclient.cc.s
 
 # Help Target
@@ -339,6 +339,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/gyl/workspace/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/gyl/work/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

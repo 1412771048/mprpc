@@ -15,9 +15,9 @@
 我们在nginx里注册了三个节点，这里就开那三个
 ```bash
 cd output/
-./service -i server.conf -r rpc1
-./service -i server.conf -r rpc2
-./service -i server.conf -r rpc3
+./server -i server.conf -r rpc1
+./server -i server.conf -r rpc2
+./server -i server.conf -r rpc3
 ./client -i client.conf
 ```
 

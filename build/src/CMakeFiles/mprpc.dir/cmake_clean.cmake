@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../lib/libmprpc.pdb"
-  "../../lib/libmprpc.so"
+  "../../output/libmprpc.pdb"
+  "../../output/libmprpc.so"
   "CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o"
   "CMakeFiles/mprpc.dir/__/thirdparty/simpleini/ConvertUTF.cc.o.d"
   "CMakeFiles/mprpc.dir/rpcchannel.cc.o"

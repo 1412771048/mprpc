@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Dmprpc_EXPORTS
 
-CXX_INCLUDES = -I/home/gyl/workspace/mprpc/include -I/home/gyl/workspace/mprpc/thirdparty -I/home/gyl/workspace/mprpc/thirdparty/muduo/include -I/home/gyl/workspace/mprpc/thirdparty/protobuf-3.21.12/include -I/home/gyl/workspace/mprpc/thirdparty/simpleini -I/home/gyl/workspace/mprpc/thirdparty/zookeeper-3.4.9/include -I/home/gyl/workspace/mprpc/example -I/home/gyl/workspace/mprpc/thirdparty/mysqlclient
+CXX_INCLUDES = -I/home/gyl/work/mprpc/include -I/home/gyl/work/mprpc/thirdparty -I/home/gyl/work/mprpc/thirdparty/muduo/include -I/home/gyl/work/mprpc/thirdparty/protobuf-3.21.12/include -I/home/gyl/work/mprpc/thirdparty/simpleini -I/home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include -I/home/gyl/work/mprpc/example -I/home/gyl/work/mprpc/thirdparty/mysqlclient
 
-CXX_FLAGS = -g -fsanitize=address -fno-omit-frame-pointer -fPIC -std=c++20
+CXX_FLAGS = -O3 -DNDEBUG -fPIC -std=c++20
 

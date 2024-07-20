@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gyl/workspace/mprpc
+CMAKE_SOURCE_DIR = /home/gyl/work/mprpc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gyl/workspace/mprpc/build
+CMAKE_BINARY_DIR = /home/gyl/work/mprpc/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/gyl/workspace/mprpc/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles /home/gyl/workspace/mprpc/build/example/client//CMakeFiles/progress.marks
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/workspace/mprpc/build/CMakeFiles 0
+	cd /home/gyl/work/mprpc/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles /home/gyl/work/mprpc/build/example/client//CMakeFiles/progress.marks
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gyl/work/mprpc/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/clean
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,39 +103,39 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/preinstall
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/preinstall
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/gyl/workspace/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/gyl/work/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-example/client/CMakeFiles/consumer.dir/rule:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/CMakeFiles/consumer.dir/rule
-.PHONY : example/client/CMakeFiles/consumer.dir/rule
+example/client/CMakeFiles/client.dir/rule:
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/client/CMakeFiles/client.dir/rule
+.PHONY : example/client/CMakeFiles/client.dir/rule
 
 # Convenience name for target.
-consumer: example/client/CMakeFiles/consumer.dir/rule
-.PHONY : consumer
+client: example/client/CMakeFiles/client.dir/rule
+.PHONY : client
 
 # fast build rule for target.
-consumer/fast:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/build
-.PHONY : consumer/fast
+client/fast:
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/build
+.PHONY : client/fast
 
 __/user.pb.o: __/user.pb.cc.o
 .PHONY : __/user.pb.o
 
 # target to build an object file
 __/user.pb.cc.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/__/user.pb.cc.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/__/user.pb.cc.o
 .PHONY : __/user.pb.cc.o
 
 __/user.pb.i: __/user.pb.cc.i
@@ -143,7 +143,7 @@ __/user.pb.i: __/user.pb.cc.i
 
 # target to preprocess a source file
 __/user.pb.cc.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/__/user.pb.cc.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/__/user.pb.cc.i
 .PHONY : __/user.pb.cc.i
 
 __/user.pb.s: __/user.pb.cc.s
@@ -151,7 +151,7 @@ __/user.pb.s: __/user.pb.cc.s
 
 # target to generate assembly for a file
 __/user.pb.cc.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/__/user.pb.cc.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/__/user.pb.cc.s
 .PHONY : __/user.pb.cc.s
 
 main.o: main.cpp.o
@@ -159,7 +159,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/main.cpp.o
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -167,7 +167,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/main.cpp.i
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -175,7 +175,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/gyl/workspace/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/consumer.dir/build.make example/client/CMakeFiles/consumer.dir/main.cpp.s
+	cd /home/gyl/work/mprpc/build && $(MAKE) $(MAKESILENT) -f example/client/CMakeFiles/client.dir/build.make example/client/CMakeFiles/client.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -186,7 +186,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... consumer"
+	@echo "... client"
 	@echo "... __/user.pb.o"
 	@echo "... __/user.pb.i"
 	@echo "... __/user.pb.s"
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/gyl/workspace/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/gyl/work/mprpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

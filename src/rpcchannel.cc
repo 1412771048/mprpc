@@ -26,7 +26,7 @@ void MpRpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method, 
     uint32_t header_size = rpc_header_str.size();
 
     std::string send_str;
-    send_str.insert(0, std::string((char*)&header_size, 4)); //前4个字节放ehader_size的2进制比表示
+    send_str.insert(0, std::string((char*)&header_size, 4)); //前4个字节放header_size的2进制比表示
     send_str += rpc_header_str + args_str;
 
     //2.把字符流发送出去，客户端使用socket编程即可，不需要高并发

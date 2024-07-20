@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
   "../example/client/CMakeLists.txt"
-  "../example/rpcservice/CMakeLists.txt"
+  "../example/server/CMakeLists.txt"
   "../src/CMakeLists.txt"
   "/usr/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in"
   "/usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c"
@@ -118,13 +118,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "example/rpcservice/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "example/server/CMakeFiles/CMakeDirectoryInformation.cmake"
   "example/client/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/mprpc.dir/DependInfo.cmake"
-  "example/rpcservice/CMakeFiles/rpcservice.dir/DependInfo.cmake"
-  "example/client/CMakeFiles/consumer.dir/DependInfo.cmake"
+  "example/server/CMakeFiles/server.dir/DependInfo.cmake"
+  "example/client/CMakeFiles/client.dir/DependInfo.cmake"
   )

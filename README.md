@@ -21,6 +21,9 @@ cd output/
 ./client -i client.conf
 ```
 
+# 参考链接：
+https://mp.weixin.qq.com/s/q4USY8xrj04RpowyaZwtfg
+
 什么是分布式？
     分布式是一种系统架构，多个节点协作完成任务
     单机服务器的缺点：1.由于硬件，并发有限；2. 修改任何一个模块，整个工程要重新编译部署；3. 资源分配不合理

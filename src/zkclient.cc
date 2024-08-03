@@ -11,7 +11,9 @@ ZkClient::~ZkClient() {
 }
 
 int ZkClient::Start(const std::string& zk_ip, const uint16_t zk_port) {
-    std::string connect_str = zk_ip + ":" + std::to_string(zk_port); 
+    // std::string connect_str = zk_ip + ":" + std::to_string(zk_port); 
+    std::string connect_str = "127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183";
+
     /* zookeeper_mt: 多线程版本,为什么用这个：zk的客户都安api提供了3个线程：
     1. api调用线程；2.网络io线程(poll，客户端程序，不需要高并发)；3.watcher回调线程    
     zookeeper_init(api调用线程)调用后会创建2个线程：网络io、watcher回调   */

@@ -32,6 +32,7 @@ message UpdateResponse {
 service RpcService {
     rpc Query(QueryRequest) returns(QueryResponse);
     rpc Update(UpdateRequest) returns(UpdateResponse);
+    rpc UpdateTable(TableRequest) returns(TableResponse);
 }
 
 // message RegisterRequest { 

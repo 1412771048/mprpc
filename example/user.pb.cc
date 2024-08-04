@@ -101,8 +101,35 @@ struct UpdateResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateResponseDefaultTypeInternal _UpdateResponse_default_instance_;
+PROTOBUF_CONSTEXPR TableRequest::TableRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.sql_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TableRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TableRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TableRequestDefaultTypeInternal() {}
+  union {
+    TableRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TableRequestDefaultTypeInternal _TableRequest_default_instance_;
+PROTOBUF_CONSTEXPR TableResponse::TableResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.msg_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TableResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TableResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TableResponseDefaultTypeInternal() {}
+  union {
+    TableResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TableResponseDefaultTypeInternal _TableResponse_default_instance_;
 }  // namespace fixbug
-static ::_pb::Metadata file_level_metadata_user_2eproto[6];
+static ::_pb::Metadata file_level_metadata_user_2eproto[8];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_user_2eproto = nullptr;
 static const ::_pb::ServiceDescriptor* file_level_service_descriptors_user_2eproto[1];
 
@@ -151,6 +178,21 @@ const uint32_t TableStruct_user_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::fixbug::UpdateResponse, _impl_.success_),
   PROTOBUF_FIELD_OFFSET(::fixbug::UpdateResponse, _impl_.msg_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::fixbug::TableRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::fixbug::TableRequest, _impl_.sql_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::fixbug::TableResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::fixbug::TableResponse, _impl_.success_),
+  PROTOBUF_FIELD_OFFSET(::fixbug::TableResponse, _impl_.msg_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::fixbug::StringList)},
@@ -159,6 +201,8 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 21, -1, -1, sizeof(::fixbug::QueryResponse)},
   { 29, -1, -1, sizeof(::fixbug::UpdateRequest)},
   { 36, -1, -1, sizeof(::fixbug::UpdateResponse)},
+  { 44, -1, -1, sizeof(::fixbug::TableRequest)},
+  { 51, -1, -1, sizeof(::fixbug::TableResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -168,6 +212,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::fixbug::_QueryResponse_default_instance_._instance,
   &::fixbug::_UpdateRequest_default_instance_._instance,
   &::fixbug::_UpdateResponse_default_instance_._instance,
+  &::fixbug::_TableRequest_default_instance_._instance,
+  &::fixbug::_TableResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_user_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -178,16 +224,19 @@ const char descriptor_table_protodef_user_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "s\030\001 \001(\005\022%\n\003msg\030\002 \001(\0132\030.fixbug.NestedStri"
   "ngList\"\034\n\rUpdateRequest\022\013\n\003sql\030\001 \001(\t\".\n\016"
   "UpdateResponse\022\017\n\007success\030\001 \001(\010\022\013\n\003msg\030\002"
-  " \001(\t2{\n\nRpcService\0224\n\005Query\022\024.fixbug.Que"
-  "ryRequest\032\025.fixbug.QueryResponse\0227\n\006Upda"
-  "te\022\025.fixbug.UpdateRequest\032\026.fixbug.Updat"
-  "eResponseB\003\200\001\001b\006proto3"
+  " \001(\t\"\033\n\014TableRequest\022\013\n\003sql\030\001 \001(\t\"-\n\rTab"
+  "leResponse\022\017\n\007success\030\001 \001(\010\022\013\n\003msg\030\002 \001(\t"
+  "2\267\001\n\nRpcService\0224\n\005Query\022\024.fixbug.QueryR"
+  "equest\032\025.fixbug.QueryResponse\0227\n\006Update\022"
+  "\025.fixbug.UpdateRequest\032\026.fixbug.UpdateRe"
+  "sponse\022:\n\013UpdateTable\022\024.fixbug.TableRequ"
+  "est\032\025.fixbug.TableResponseB\003\200\001\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_user_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_user_2eproto = {
-    false, false, 422, descriptor_table_protodef_user_2eproto,
+    false, false, 559, descriptor_table_protodef_user_2eproto,
     "user.proto",
-    &descriptor_table_user_2eproto_once, nullptr, 0, 6,
+    &descriptor_table_user_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_user_2eproto::offsets,
     file_level_metadata_user_2eproto, file_level_enum_descriptors_user_2eproto,
     file_level_service_descriptors_user_2eproto,
@@ -1437,6 +1486,439 @@ void UpdateResponse::InternalSwap(UpdateResponse* other) {
 
 // ===================================================================
 
+class TableRequest::_Internal {
+ public:
+};
+
+TableRequest::TableRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:fixbug.TableRequest)
+}
+TableRequest::TableRequest(const TableRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TableRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sql_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.sql_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sql_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sql().empty()) {
+    _this->_impl_.sql_.Set(from._internal_sql(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:fixbug.TableRequest)
+}
+
+inline void TableRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sql_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.sql_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sql_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TableRequest::~TableRequest() {
+  // @@protoc_insertion_point(destructor:fixbug.TableRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TableRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.sql_.Destroy();
+}
+
+void TableRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TableRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:fixbug.TableRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.sql_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TableRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string sql = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_sql();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "fixbug.TableRequest.sql"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TableRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:fixbug.TableRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string sql = 1;
+  if (!this->_internal_sql().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_sql().data(), static_cast<int>(this->_internal_sql().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "fixbug.TableRequest.sql");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_sql(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:fixbug.TableRequest)
+  return target;
+}
+
+size_t TableRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:fixbug.TableRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string sql = 1;
+  if (!this->_internal_sql().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_sql());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TableRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TableRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TableRequest::GetClassData() const { return &_class_data_; }
+
+
+void TableRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TableRequest*>(&to_msg);
+  auto& from = static_cast<const TableRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:fixbug.TableRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_sql().empty()) {
+    _this->_internal_set_sql(from._internal_sql());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TableRequest::CopyFrom(const TableRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:fixbug.TableRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TableRequest::IsInitialized() const {
+  return true;
+}
+
+void TableRequest::InternalSwap(TableRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.sql_, lhs_arena,
+      &other->_impl_.sql_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TableRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_user_2eproto_getter, &descriptor_table_user_2eproto_once,
+      file_level_metadata_user_2eproto[6]);
+}
+
+// ===================================================================
+
+class TableResponse::_Internal {
+ public:
+};
+
+TableResponse::TableResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:fixbug.TableResponse)
+}
+TableResponse::TableResponse(const TableResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TableResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.msg_){}
+    , decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.msg_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.msg_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_msg().empty()) {
+    _this->_impl_.msg_.Set(from._internal_msg(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:fixbug.TableResponse)
+}
+
+inline void TableResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.msg_){}
+    , decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.msg_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.msg_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TableResponse::~TableResponse() {
+  // @@protoc_insertion_point(destructor:fixbug.TableResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TableResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.msg_.Destroy();
+}
+
+void TableResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TableResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:fixbug.TableResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.msg_.ClearToEmpty();
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TableResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string msg = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_msg();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "fixbug.TableResponse.msg"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TableResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:fixbug.TableResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  // string msg = 2;
+  if (!this->_internal_msg().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_msg().data(), static_cast<int>(this->_internal_msg().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "fixbug.TableResponse.msg");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_msg(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:fixbug.TableResponse)
+  return target;
+}
+
+size_t TableResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:fixbug.TableResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string msg = 2;
+  if (!this->_internal_msg().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_msg());
+  }
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TableResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TableResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TableResponse::GetClassData() const { return &_class_data_; }
+
+
+void TableResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TableResponse*>(&to_msg);
+  auto& from = static_cast<const TableResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:fixbug.TableResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_msg().empty()) {
+    _this->_internal_set_msg(from._internal_msg());
+  }
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TableResponse::CopyFrom(const TableResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:fixbug.TableResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TableResponse::IsInitialized() const {
+  return true;
+}
+
+void TableResponse::InternalSwap(TableResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.msg_, lhs_arena,
+      &other->_impl_.msg_, rhs_arena
+  );
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TableResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_user_2eproto_getter, &descriptor_table_user_2eproto_once,
+      file_level_metadata_user_2eproto[7]);
+}
+
+// ===================================================================
+
 RpcService::~RpcService() {}
 
 const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* RpcService::descriptor() {
@@ -1464,6 +1946,14 @@ void RpcService::Update(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
   done->Run();
 }
 
+void RpcService::UpdateTable(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                         const ::fixbug::TableRequest*,
+                         ::fixbug::TableResponse*,
+                         ::google::protobuf::Closure* done) {
+  controller->SetFailed("Method UpdateTable() not implemented.");
+  done->Run();
+}
+
 void RpcService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
                              ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                              const ::PROTOBUF_NAMESPACE_ID::Message* request,
@@ -1487,6 +1977,14 @@ void RpcService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* met
                  response),
              done);
       break;
+    case 2:
+      UpdateTable(controller,
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::fixbug::TableRequest*>(
+                 request),
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::fixbug::TableResponse*>(
+                 response),
+             done);
+      break;
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       break;
@@ -1501,6 +1999,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message& RpcService::GetRequestPrototype(
       return ::fixbug::QueryRequest::default_instance();
     case 1:
       return ::fixbug::UpdateRequest::default_instance();
+    case 2:
+      return ::fixbug::TableRequest::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -1516,6 +2016,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message& RpcService::GetResponsePrototype(
       return ::fixbug::QueryResponse::default_instance();
     case 1:
       return ::fixbug::UpdateResponse::default_instance();
+    case 2:
+      return ::fixbug::TableResponse::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -1548,6 +2050,13 @@ void RpcService_Stub::Update(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
   channel_->CallMethod(descriptor()->method(1),
                        controller, request, response, done);
 }
+void RpcService_Stub::UpdateTable(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                              const ::fixbug::TableRequest* request,
+                              ::fixbug::TableResponse* response,
+                              ::google::protobuf::Closure* done) {
+  channel_->CallMethod(descriptor()->method(2),
+                       controller, request, response, done);
+}
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace fixbug
@@ -1575,6 +2084,14 @@ Arena::CreateMaybeMessage< ::fixbug::UpdateRequest >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::fixbug::UpdateResponse*
 Arena::CreateMaybeMessage< ::fixbug::UpdateResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::fixbug::UpdateResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::fixbug::TableRequest*
+Arena::CreateMaybeMessage< ::fixbug::TableRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::fixbug::TableRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::fixbug::TableResponse*
+Arena::CreateMaybeMessage< ::fixbug::TableResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::fixbug::TableResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

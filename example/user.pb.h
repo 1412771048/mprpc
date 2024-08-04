@@ -58,6 +58,12 @@ extern QueryResponseDefaultTypeInternal _QueryResponse_default_instance_;
 class StringList;
 struct StringListDefaultTypeInternal;
 extern StringListDefaultTypeInternal _StringList_default_instance_;
+class TableRequest;
+struct TableRequestDefaultTypeInternal;
+extern TableRequestDefaultTypeInternal _TableRequest_default_instance_;
+class TableResponse;
+struct TableResponseDefaultTypeInternal;
+extern TableResponseDefaultTypeInternal _TableResponse_default_instance_;
 class UpdateRequest;
 struct UpdateRequestDefaultTypeInternal;
 extern UpdateRequestDefaultTypeInternal _UpdateRequest_default_instance_;
@@ -70,6 +76,8 @@ template<> ::fixbug::NestedStringList* Arena::CreateMaybeMessage<::fixbug::Neste
 template<> ::fixbug::QueryRequest* Arena::CreateMaybeMessage<::fixbug::QueryRequest>(Arena*);
 template<> ::fixbug::QueryResponse* Arena::CreateMaybeMessage<::fixbug::QueryResponse>(Arena*);
 template<> ::fixbug::StringList* Arena::CreateMaybeMessage<::fixbug::StringList>(Arena*);
+template<> ::fixbug::TableRequest* Arena::CreateMaybeMessage<::fixbug::TableRequest>(Arena*);
+template<> ::fixbug::TableResponse* Arena::CreateMaybeMessage<::fixbug::TableResponse>(Arena*);
 template<> ::fixbug::UpdateRequest* Arena::CreateMaybeMessage<::fixbug::UpdateRequest>(Arena*);
 template<> ::fixbug::UpdateResponse* Arena::CreateMaybeMessage<::fixbug::UpdateResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -1033,6 +1041,323 @@ class UpdateResponse final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_user_2eproto;
 };
+// -------------------------------------------------------------------
+
+class TableRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:fixbug.TableRequest) */ {
+ public:
+  inline TableRequest() : TableRequest(nullptr) {}
+  ~TableRequest() override;
+  explicit PROTOBUF_CONSTEXPR TableRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TableRequest(const TableRequest& from);
+  TableRequest(TableRequest&& from) noexcept
+    : TableRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline TableRequest& operator=(const TableRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TableRequest& operator=(TableRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TableRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TableRequest* internal_default_instance() {
+    return reinterpret_cast<const TableRequest*>(
+               &_TableRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(TableRequest& a, TableRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TableRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TableRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TableRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TableRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TableRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TableRequest& from) {
+    TableRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TableRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "fixbug.TableRequest";
+  }
+  protected:
+  explicit TableRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSqlFieldNumber = 1,
+  };
+  // string sql = 1;
+  void clear_sql();
+  const std::string& sql() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sql(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sql();
+  PROTOBUF_NODISCARD std::string* release_sql();
+  void set_allocated_sql(std::string* sql);
+  private:
+  const std::string& _internal_sql() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sql(const std::string& value);
+  std::string* _internal_mutable_sql();
+  public:
+
+  // @@protoc_insertion_point(class_scope:fixbug.TableRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sql_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_user_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TableResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:fixbug.TableResponse) */ {
+ public:
+  inline TableResponse() : TableResponse(nullptr) {}
+  ~TableResponse() override;
+  explicit PROTOBUF_CONSTEXPR TableResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TableResponse(const TableResponse& from);
+  TableResponse(TableResponse&& from) noexcept
+    : TableResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TableResponse& operator=(const TableResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TableResponse& operator=(TableResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TableResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TableResponse* internal_default_instance() {
+    return reinterpret_cast<const TableResponse*>(
+               &_TableResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(TableResponse& a, TableResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TableResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TableResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TableResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TableResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TableResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TableResponse& from) {
+    TableResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TableResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "fixbug.TableResponse";
+  }
+  protected:
+  explicit TableResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMsgFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string msg = 2;
+  void clear_msg();
+  const std::string& msg() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msg(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msg();
+  PROTOBUF_NODISCARD std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:fixbug.TableResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_user_2eproto;
+};
 // ===================================================================
 
 class RpcService_Stub;
@@ -1055,6 +1380,10 @@ class RpcService : public ::PROTOBUF_NAMESPACE_ID::Service {
   virtual void Update(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::fixbug::UpdateRequest* request,
                        ::fixbug::UpdateResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void UpdateTable(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::fixbug::TableRequest* request,
+                       ::fixbug::TableResponse* response,
                        ::google::protobuf::Closure* done);
 
   // implements Service ----------------------------------------------
@@ -1092,6 +1421,10 @@ class RpcService_Stub : public RpcService {
   void Update(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::fixbug::UpdateRequest* request,
                        ::fixbug::UpdateResponse* response,
+                       ::google::protobuf::Closure* done);
+  void UpdateTable(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::fixbug::TableRequest* request,
+                       ::fixbug::TableResponse* response,
                        ::google::protobuf::Closure* done);
  private:
   ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
@@ -1526,9 +1859,141 @@ inline void UpdateResponse::set_allocated_msg(std::string* msg) {
   // @@protoc_insertion_point(field_set_allocated:fixbug.UpdateResponse.msg)
 }
 
+// -------------------------------------------------------------------
+
+// TableRequest
+
+// string sql = 1;
+inline void TableRequest::clear_sql() {
+  _impl_.sql_.ClearToEmpty();
+}
+inline const std::string& TableRequest::sql() const {
+  // @@protoc_insertion_point(field_get:fixbug.TableRequest.sql)
+  return _internal_sql();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TableRequest::set_sql(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sql_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:fixbug.TableRequest.sql)
+}
+inline std::string* TableRequest::mutable_sql() {
+  std::string* _s = _internal_mutable_sql();
+  // @@protoc_insertion_point(field_mutable:fixbug.TableRequest.sql)
+  return _s;
+}
+inline const std::string& TableRequest::_internal_sql() const {
+  return _impl_.sql_.Get();
+}
+inline void TableRequest::_internal_set_sql(const std::string& value) {
+  
+  _impl_.sql_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TableRequest::_internal_mutable_sql() {
+  
+  return _impl_.sql_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TableRequest::release_sql() {
+  // @@protoc_insertion_point(field_release:fixbug.TableRequest.sql)
+  return _impl_.sql_.Release();
+}
+inline void TableRequest::set_allocated_sql(std::string* sql) {
+  if (sql != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sql_.SetAllocated(sql, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sql_.IsDefault()) {
+    _impl_.sql_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:fixbug.TableRequest.sql)
+}
+
+// -------------------------------------------------------------------
+
+// TableResponse
+
+// bool success = 1;
+inline void TableResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool TableResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool TableResponse::success() const {
+  // @@protoc_insertion_point(field_get:fixbug.TableResponse.success)
+  return _internal_success();
+}
+inline void TableResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void TableResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:fixbug.TableResponse.success)
+}
+
+// string msg = 2;
+inline void TableResponse::clear_msg() {
+  _impl_.msg_.ClearToEmpty();
+}
+inline const std::string& TableResponse::msg() const {
+  // @@protoc_insertion_point(field_get:fixbug.TableResponse.msg)
+  return _internal_msg();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TableResponse::set_msg(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.msg_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:fixbug.TableResponse.msg)
+}
+inline std::string* TableResponse::mutable_msg() {
+  std::string* _s = _internal_mutable_msg();
+  // @@protoc_insertion_point(field_mutable:fixbug.TableResponse.msg)
+  return _s;
+}
+inline const std::string& TableResponse::_internal_msg() const {
+  return _impl_.msg_.Get();
+}
+inline void TableResponse::_internal_set_msg(const std::string& value) {
+  
+  _impl_.msg_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TableResponse::_internal_mutable_msg() {
+  
+  return _impl_.msg_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TableResponse::release_msg() {
+  // @@protoc_insertion_point(field_release:fixbug.TableResponse.msg)
+  return _impl_.msg_.Release();
+}
+inline void TableResponse::set_allocated_msg(std::string* msg) {
+  if (msg != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.msg_.SetAllocated(msg, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.msg_.IsDefault()) {
+    _impl_.msg_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:fixbug.TableResponse.msg)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -28,6 +28,13 @@ message UpdateResponse {
     string msg = 2;   //更新结果
 }
 
+message TableRequest {
+    string sql = 1;
+}
+message TableResponse {
+    bool success = 1; //更新是否成功
+    string msg = 2;   //更新结果
+}
 
 service RpcService {
     rpc Query(QueryRequest) returns(QueryResponse);

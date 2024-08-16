@@ -67,10 +67,14 @@ void MpRpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method, 
 
     //3. 接受响应，反序列化存入response,返回给客户端
     char recv_buf[1024] = {0};
+    //设置recv超时时间: 3s
+    timeval timeout{3, 0};
+    setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
     int recv_size = recv(fd, recv_buf, sizeof(recv_buf), 0);
-    close(fd);
-    if (recv_size == -1) {
-        controller->SetFailed("socket recv error, recv_size = -1");
+    close(fd); 
+    if (recv_size < 0) {
+        if (errno == EAGAIN || errno == EWOULDBLOCK) controller->SetFailed("socket recv timeout");
+        else controller->SetFailed("socket recv error, recv_size = -1");
         return;
     } else if (recv_size == 0) {
         controller->SetFailed("socket connect close! recv_size = 0");

@@ -10,10 +10,18 @@
 
 
 # 准备工作
+```bash
+# 启动三台zk
+sudo ./zkServer.sh start ../conf/zoo1.cfg 
+sudo ./zkServer.sh start ../conf/zoo2.cfg 
+sudo ./zkServer.sh start ../conf/zoo3.cfg 
+
+
+```
 启动zookeeper和nginx,已下载到vendor，参考以下链接开启即可：
 [nginx](https://blog.csdn.net/qq_72642900/article/details/138380177?spm=1001.2014.3001.5502)
-
 [zookeeper](https://blog.csdn.net/qq_72642900/article/details/138380411?spm=1001.2014.3001.5502)
+
 
 # 编译
 ```bash

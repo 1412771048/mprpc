@@ -62,7 +62,7 @@ void RpcProvider::MuduoStart(const std::string& ip, const uint16_t port, const s
     server.setMessageCallback([&](const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time)
         {this->OnMessage(conn, buf, time);});
     // server.setConnectionCallback(bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
-    server.setMessageCallback(bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    //server.setMessageCallback(bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     server.setThreadNum(thread_num);//设置线程数，一个io线程，三个工作线程
     server.start();
     eventLoop_.loop(); 

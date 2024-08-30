@@ -128,6 +128,12 @@ ConnectPool::ConnectPool() {
                 --connectCnt_;
                 delete p;
             }
+            
+            //实现保留初始连接数后，再对他们做个保活
+            for (int i = 0; i < initSize_; ++i) {
+                auto conn = GetConnection();
+                conn->query("select 1");
+            }
         }
     });
     scan.detach();

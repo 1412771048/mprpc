@@ -11,6 +11,8 @@
 #include "mysql.hpp"
 #include "SimpleIni.h"
 
+const char* mysql_conf = "/home/gyl/work/mprpc/thirdparty/mysqlclient/mysql.conf";
+
 //连接池类
 class ConnectPool {
 public:
@@ -50,7 +52,7 @@ ConnectPool& ConnectPool::GetInstance() {
 
 bool ConnectPool::LoadConfig() {
     CSimpleIniA ini;
-    if (ini.LoadFile("/home/gyl/work/mprpc/thirdparty/mysqlclient/mysql.conf") < 0) {
+    if (ini.LoadFile(mysql_conf) < 0) {
         return false;
     }
     ip_ = ini.GetValue("mysql", "ip");

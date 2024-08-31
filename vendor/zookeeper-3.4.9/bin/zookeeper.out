@@ -2682,3 +2682,5 @@ EndOfStreamException: Unable to read additional data from client sessionid 0x291
 2024-08-31 19:15:08,001 [myid:2] - INFO  [ProcessThread(sid:2 cport:-1)::PrepRequestProcessor@487] - Processed session termination for sessionid: 0x291a72f9a700074
 2024-08-31 19:15:10,000 [myid:2] - INFO  [SessionTracker:ZooKeeperServer@358] - Expiring session 0x191a72f9a6d007d, timeout of 10000ms exceeded
 2024-08-31 19:15:10,000 [myid:2] - INFO  [ProcessThread(sid:2 cport:-1)::PrepRequestProcessor@487] - Processed session termination for sessionid: 0x191a72f9a6d007d
+2024-08-31 19:15:12,000 [myid:2] - INFO  [SessionTracker:ZooKeeperServer@358] - Expiring session 0x391a72fa3280091, timeout of 10000ms exceeded
+2024-08-31 19:15:12,001 [myid:2] - INFO  [ProcessThread(sid:2 cport:-1)::PrepRequestProcessor@487] - Processed session termination for sessionid: 0x391a72fa3280091

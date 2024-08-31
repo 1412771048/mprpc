@@ -84,12 +84,6 @@ int main(int argc, char** argv) {
     //1. 初始化框架：把配置文件写入configMap_
     auto& config = mprpc::MpRpcConfig::GetInstance(); //获取单例的引用
     config.Init(argc, argv); 
-    std::cout << "zookeeper_ip: " << config.QuerryConfig("zookeeper_ip") << std::endl;
-    std::cout << "zookeeper_port: " << config.QuerryConfig("zookeeper_port") << std::endl;
-    std::cout << "rpc_ip: " << config.QuerryConfig("rpc_ip") << std::endl;
-    std::cout << "rpc_port: " << config.QuerryConfig("rpc_port") << std::endl;
-    std::cout << "nginx_ip: " << config.QuerryConfig("nginx_ip") << std::endl;
-    std::cout << "nginx_port: " << config.QuerryConfig("nginx_port") << std::endl;
     //2. 发布服务: 把本地服务写入serviceMap_
     mprpc::RpcProvider provider;
     provider.NotifyService(new Rpc); 

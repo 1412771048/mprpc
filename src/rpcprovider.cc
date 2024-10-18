@@ -16,17 +16,17 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
   
 //启动网络服务，即muduo库编程
 void RpcProvider::Run() {
-    //1. 连接zk
+    //1. 连接本节点对应的zk
     auto& config = mprpc::MpRpcConfig::GetInstance(); //获取单例的引用
-    std::string zk_ip = config.QuerryConfig("zookeeper_ip");
-    uint16_t zk_port = stoi(config.QuerryConfig("zookeeper_port"));
+    std::string zk = config.QuerryConfig("zk");
     std::string rpc_ip = config.QuerryConfig("rpc_ip");
     uint16_t rpc_port = stoi(config.QuerryConfig("rpc_port"));
     std::string nginx_ip = config.QuerryConfig("nginx_ip");
     uint16_t nginx_port = stoi(config.QuerryConfig("nginx_port"));
 
+
     ZkClient zk_cli;
-    if (zk_cli.Start(zk_ip, zk_port) != 0) {//zkclinet也会发起连接，我们下面的muduo又是连接
+    if (zk_cli.Start(zk) != 0) {//zkclinet也会发起连接，我们下面的muduo又是连接
         LOG_ERROR("zookeeper connect failed!");
         exit(EXIT_SUCCESS);
     } //session的timeout时间是30s，cli每1/3的timeout发送一个心跳，重置timeout 
@@ -62,7 +62,7 @@ void RpcProvider::MuduoStart(const std::string& ip, const uint16_t port, const s
     server.setMessageCallback([&](const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time)
         {this->OnMessage(conn, buf, time);});
     // server.setConnectionCallback(bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
-    server.setMessageCallback(bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    //server.setMessageCallback(bind(&RpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     server.setThreadNum(thread_num);//设置线程数，一个io线程，三个工作线程
     server.start();
     eventLoop_.loop(); 
@@ -70,8 +70,9 @@ void RpcProvider::MuduoStart(const std::string& ip, const uint16_t port, const s
 
 //连接事件回调
 void RpcProvider::OnConnection(const muduo::net::TcpConnectionPtr& conn) {
-    if (!conn->connected()) {//断开连接了
-        conn->shutdown(); //关闭文件描述符，对应socket的close
+    if (!conn->connected()) {   //对端断开
+        conn->forceClose();     //服务端也关闭，不要用shutdown:他不是完全关闭
+        //conn->shutdown();
     }
 }
 
@@ -139,6 +140,7 @@ void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr& conn, goog
     } else {
         conn->send(response_str);
     }
-    conn->shutdown();  //服务端主动关闭，模拟短连接
+    //conn->forceClose(); //服务端主动关闭，模拟短连接；但我们开了socket连接池，这边就不能主动关了
+    //conn->shutdown();
 }
 }// namespace mprpc 

@@ -42,23 +42,21 @@ void MpRpcConfig::Init(int argc, char** argv) {
         std::cerr << conf << "加载失败，请检查输入的文件路径！" << std::endl;
         exit(EXIT_FAILURE);
     }
-    std::string zookeeper_ip = ini.GetValue("zookeeper", "ip", "");
-    std::string zookeeper_port = ini.GetValue("zookeeper", "port", "");
-    if (zookeeper_ip.empty() || zookeeper_port.empty()) {
+    std::string zk_ip_port = ini.GetValue("zookeeper", "ip_port", "");
+    if (zk_ip_port.empty()) {
         std::cerr << conf << "内容无效，请检查！" << std::endl;
         exit(EXIT_FAILURE);
     }
-    configMap_.insert({"zookeeper_ip", zookeeper_ip});
-    configMap_.insert({"zookeeper_port", zookeeper_port});
-
+    configMap_.insert({"zk_ip_port", zk_ip_port});
 
     std::string rpc_ip = ini.GetValue(rpc.c_str(), "ip", "");
     std::string rpc_port = ini.GetValue(rpc.c_str(), "port", "");
     std::string nginx_ip = ini.GetValue(rpc.c_str(), "nginx_ip", "");
     std::string nginx_port = ini.GetValue(rpc.c_str(), "nginx_port", "");
+    std::string zk = ini.GetValue(rpc.c_str(), "zk", "");
     //下面是服务端才会配置的,若输入了-r，则表示是服务端,再判断内容是否有效
     if (!rpc.empty()) {
-        if (rpc_ip.empty() || rpc_port.empty() || nginx_ip.empty() || nginx_port.empty()) {
+        if (rpc_ip.empty() || rpc_port.empty() || nginx_ip.empty() || nginx_port.empty() || zk.empty()) {
             std::cerr << conf << "服务端配置无效，请检查！" << std::endl;
             exit(EXIT_FAILURE);
         }
@@ -66,7 +64,7 @@ void MpRpcConfig::Init(int argc, char** argv) {
         configMap_.insert({"rpc_port", rpc_port});
         configMap_.insert({"nginx_ip", nginx_ip});
         configMap_.insert({"nginx_port", nginx_port});
-
+        configMap_.insert({"zk", zk});
     }
 }
 } //namespace mprpc

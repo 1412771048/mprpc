@@ -308,7 +308,12 @@ src/CMakeFiles/mprpc.dir/rpcchannel.cc.o: \
  /usr/include/c++/11/bits/atomic_timed_wait.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
  /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
- /usr/include/x86_64-linux-gnu/bits/semaphore.h \
+ /usr/include/x86_64-linux-gnu/bits/semaphore.h /usr/include/c++/11/queue \
+ /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
+ /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_queue.h \
+ /usr/include/c++/11/thread /usr/include/c++/11/stop_token \
+ /usr/include/c++/11/bits/std_thread.h \
+ /usr/include/c++/11/condition_variable \
  /home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include/zookeeper/zookeeper.h \
  /home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include/zookeeper/proto.h \
  /home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include/zookeeper/zookeeper_version.h \
@@ -319,4 +324,5 @@ src/CMakeFiles/mprpc.dir/rpcchannel.cc.o: \
  /home/gyl/work/mprpc/thirdparty/simpleini/SimpleIni.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
- /home/gyl/work/mprpc/thirdparty/simpleini/ConvertUTF.h
+ /home/gyl/work/mprpc/thirdparty/simpleini/ConvertUTF.h \
+ /home/gyl/work/mprpc/include/socket_pool.h

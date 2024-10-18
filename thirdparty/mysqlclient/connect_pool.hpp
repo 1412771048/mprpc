@@ -11,6 +11,8 @@
 #include "mysql.hpp"
 #include "SimpleIni.h"
 
+const char* mysql_conf = "/home/gyl/work/mprpc/thirdparty/mysqlclient/mysql.conf";
+
 //连接池类
 class ConnectPool {
 public:
@@ -50,7 +52,7 @@ ConnectPool& ConnectPool::GetInstance() {
 
 bool ConnectPool::LoadConfig() {
     CSimpleIniA ini;
-    if (ini.LoadFile("/home/gyl/work/mprpc/thirdparty/mysqlclient/mysql.conf") < 0) {
+    if (ini.LoadFile(mysql_conf) < 0) {
         return false;
     }
     ip_ = ini.GetValue("mysql", "ip");
@@ -125,6 +127,12 @@ ConnectPool::ConnectPool() {
                 connQue_.pop();
                 --connectCnt_;
                 delete p;
+            }
+            
+            //实现保留初始连接数后，再对他们做个保活
+            for (int i = 0; i < initSize_; ++i) {
+                auto conn = GetConnection();
+                conn->query("select 1");
             }
         }
     });

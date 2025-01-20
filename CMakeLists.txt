@@ -2,13 +2,11 @@ cmake_minimum_required(VERSION 3.0)
 if (NOT CMAKE_BUILD_TYPE) 
     set(CMAKE_BUILD_TYPE Release) 
 endif()
-
-set(CMAKE_CXX_FLAGS_DEBUG "-g -fsanitize=address -fno-omit-frame-pointer")
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #必须支持指定的c++标准
 set(CMAKE_CXX_EXTENSIONS OFF)  #关闭gcc扩展
 
-project(mprpc)
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_FLAGS_DEBUG "-g -fsanitize=address -fno-omit-frame-pointer")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output) #程序生成位置, PROJECT_SOURCE_DIR是当前项目的顶级路径
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output)  #库生成位置
 

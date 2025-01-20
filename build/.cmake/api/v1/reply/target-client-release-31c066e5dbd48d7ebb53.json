@@ -12,8 +12,10 @@
 		[
 			"add_executable",
 			"link_directories",
+			"target_link_directories",
 			"target_link_libraries",
-			"include_directories"
+			"include_directories",
+			"target_include_directories"
 		],
 		"files" : 
 		[
@@ -28,7 +30,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 5,
+				"line" : 8,
 				"parent" : 0
 			},
 			{
@@ -37,20 +39,32 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 25,
+				"line" : 23,
 				"parent" : 2
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 6,
+				"line" : 18,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
+				"file" : 0,
+				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
 				"file" : 1,
-				"line" : 15,
+				"line" : 13,
 				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
 			}
 		]
 	},
@@ -69,36 +83,48 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/thirdparty"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/thirdparty/muduo/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/thirdparty/protobuf-3.21.12/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/thirdparty/simpleini"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/example"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/home/gyl/work/mprpc/thirdparty/mysqlclient"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/gyl/work/mprpc/example/client/example"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/gyl/work/mprpc/example/client/thirdparty/mysqlclient"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/gyl/work/mprpc/example/client/include"
 				}
 			],
 			"language" : "CXX",
@@ -120,7 +146,7 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 4,
+			"backtrace" : 5,
 			"id" : "mprpc::@145eef247bfb46b6828c"
 		}
 	],
@@ -158,16 +184,21 @@
 				"role" : "libraryPath"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/home/gyl/work/mprpc/output:/home/gyl/work/mprpc/thirdparty/muduo/lib:/home/gyl/work/mprpc/thirdparty/protobuf-3.21.12/lib:/home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/lib",
+				"backtrace" : 4,
+				"fragment" : "-L/home/gyl/work/mprpc/example/client/output",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/gyl/work/mprpc/output:/home/gyl/work/mprpc/thirdparty/muduo/lib:/home/gyl/work/mprpc/thirdparty/protobuf-3.21.12/lib:/home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/lib:/home/gyl/work/mprpc/example/client/output",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 5,
 				"fragment" : "../../../output/libmprpc.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 5,
 				"fragment" : "-lmysqlclient",
 				"role" : "libraries"
 			},

@@ -88,5 +88,16 @@
         "valarray": "cpp",
         "span": "cpp"
     },
-    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+    "C_Cpp.codeAnalysis.runAutomatically": true,
+    "files.autoSave": "afterDelay",
+    "marscode.codeCompletionPro": {
+        "enableCodeCompletionPro": true
+    },
+    "marscode.enableInlineCommand": false,
+    "marscode.enableCodelens": {
+        "enableInlineDocumentation": true,
+        "enableInlineUnitTest": true,
+        "enableInlineExplain": true
+    }
 }

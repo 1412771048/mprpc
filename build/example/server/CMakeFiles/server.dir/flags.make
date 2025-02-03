@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/gyl/work/mprpc/include -I/home/gyl/work/mprpc/thirdparty -I/home/gyl/work/mprpc/thirdparty/muduo/include -I/home/gyl/work/mprpc/thirdparty/protobuf-3.21.12/include -I/home/gyl/work/mprpc/thirdparty/simpleini -I/home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include -I/home/gyl/work/mprpc/example -I/home/gyl/work/mprpc/thirdparty/mysqlclient -I/home/gyl/work/mprpc/example/server/example -I/home/gyl/work/mprpc/example/server/thirdparty/mysqlclient -I/home/gyl/work/mprpc/example/server/include
+CXX_INCLUDES = -I/home/gyl/work/mprpc/example -I/home/gyl/work/mprpc/thirdparty/mysqlclient -I/home/gyl/work/mprpc/include -I/home/gyl/work/mprpc/thirdparty/protobuf-3.21.12/include -I/home/gyl/work/mprpc/thirdparty -I/home/gyl/work/mprpc/thirdparty/muduo/include -I/home/gyl/work/mprpc/thirdparty/simpleini -I/home/gyl/work/mprpc/thirdparty/zookeeper-3.4.9/include
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++20
+CXX_FLAGS = -O3 -DNDEBUG -std=gnu++20
 

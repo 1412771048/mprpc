@@ -22,4 +22,8 @@ target_link_directories(${PROJECT_NAME} PRIVATE
 ) 
 
 #库名
-target_link_libraries(${PROJECT_NAME} PRIVATE mprpc mysqlclient protobuf)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    mprpc 
+    mysqlclient 
+    protobuf
+)

@@ -16,11 +16,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 ) 
 
 #库位置
-target_link_directories(${PROJECT_NAME} PUBLIC
+target_link_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/output
     ${CMAKE_SOURCE_DIR}/thirdparty/protobuf-3.21.12/lib
 ) 
 
 
 #库名
-target_link_libraries(${PROJECT_NAME} mprpc mysqlclient)
+target_link_libraries(${PROJECT_NAME} PRIVATE mprpc mysqlclient protobuf)

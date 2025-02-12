@@ -18,15 +18,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 #用到的库的位置
-target_link_directories(${PROJECT_NAME} PUBLIC
+target_link_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/thirdparty/muduo/lib
     ${CMAKE_SOURCE_DIR}/thirdparty/protobuf-3.21.12/lib
     ${CMAKE_SOURCE_DIR}/thirdparty/zookeeper-3.4.9/lib
 )
 
 #用到的库名
-target_link_libraries(${PROJECT_NAME} muduo_net muduo_base pthread protobuf zookeeper_mt) #多线程的zookeeper库
-
-
+target_link_libraries(${PROJECT_NAME} PRIVATE muduo_net muduo_base pthread protobuf zookeeper_mt) #多线程的zookeeper库
 
 

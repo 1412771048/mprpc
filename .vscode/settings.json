@@ -96,8 +96,9 @@
     },
     "marscode.enableInlineCommand": false,
     "marscode.enableCodelens": {
-        "enableInlineDocumentation": true,
-        "enableInlineUnitTest": true,
-        "enableInlineExplain": true
-    }
+        "enableInlineDocumentation": false,
+        "enableInlineUnitTest": false,
+        "enableInlineExplain": false
+    },
+    "marscode.chatLanguage": "cn"
 }

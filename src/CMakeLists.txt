@@ -25,6 +25,12 @@ target_link_directories(${PROJECT_NAME} PRIVATE
 )
 
 #用到的库名
-target_link_libraries(${PROJECT_NAME} PRIVATE muduo_net muduo_base pthread protobuf zookeeper_mt) #多线程的zookeeper库
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    muduo_net 
+    muduo_base 
+    pthread 
+    protobuf
+    zookeeper_mt    #多线程的zookeeper库
+) 
 
 
